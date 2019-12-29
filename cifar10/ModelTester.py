@@ -1,8 +1,7 @@
 from tensorflow.keras.datasets import *
+from tensorflow.keras.optimizers import *
 
 from cifar10.models.Models import *
-
-print('__file__={0:<35} | __name__={1:<20} | __package__={2:<20}'.format(__file__, __name__, str(__package__)))
 
 
 def train_model_mlp(model, train_ds, train_labels, test_ds, test_labels, epochs_p=200, batch_size_p=4096):
@@ -17,8 +16,13 @@ if __name__ == "__main__":
 
     mlp_struct.nb_hidden_layers = 2
     mlp_struct.layers_size = [10, 10]
+    mlp_struct.use_dropout = True
+    mlp_struct.dropout_indexes = [1]
+    mlp_struct.use_l1l2_regularisation_hidden_layers = True
+    mlp_struct.regulization_indexes = [1]
+    mlp_struct.use_l1l2_regularisation_output_layer = True
+    mlp_struct.optimizer = SGD()
+    mlp_struct.metrics = ['mean_squared_error']
 
     m = create_custom_mlp(mlp_struct)
     m.summary()
-
-    # train_model_mlp(m, train_images, train_labels, test_images, test_labels, 1)
