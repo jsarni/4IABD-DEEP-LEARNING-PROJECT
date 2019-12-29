@@ -1,3 +1,4 @@
 **/.idea
 *.tar.gz
-./cifar10/cifar-10-batches-py/readme.html
+*.html
+__pycache__/
