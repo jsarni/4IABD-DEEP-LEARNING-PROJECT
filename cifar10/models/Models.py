@@ -1,10 +1,13 @@
 from random import randint
+from cifar10.models.structurer.MlpStructurer import MlpStructurer
 
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
 from tensorflow.keras.regularizers import *
 
-from cifar10.models.structurer.MlpStructurer import MlpStructurer
+
+
+
 
 
 def create_custom_mlp(mlp_struct: MlpStructurer):
@@ -71,3 +74,41 @@ def getModelLogNameFromMlpStructurer(mlp_structurer: MlpStructurer):
                                                                            "_".join(mlp_structurer.metrics),
                                                                            uid
                                                                            )
+
+
+
+def create_model_resnet34(num_hidden: int = 12, use_skip_connections: bool = False):
+
+    input_tensor = Input((28, 28, 1))
+    last_output_tensor = input_tensor
+    antipen_output_tensor = None
+    nb_skipped = 0
+    for i in range(num_hidden):
+        if use_skip_connections and antipen_output_tensor is not None:
+                if nb_skipped == 2:
+                    add_tensor = Add()([antipen_output_tensor, last_output_tensor])
+                    antipen_output_tensor = add_tensor
+                    last_output_tensor = add_tensor
+                    nb_skipped = 0
+                last_output_tensor = Conv2D(8, (28, 28), padding='same', activation='relu', input_shape=(28, 28, 1), name=f"conv2d_{i}")(last_output_tensor)
+                nb_skipped += 1
+
+        else:
+            antipen_output_tensor =input_tensor
+            last_output_tensor = Conv2D(8, (28, 28), padding='same', activation='relu', input_shape=(28, 28, 1), name=f"conv2d_{i}")(last_output_tensor)
+            nb_skipped +=1
+
+    if use_skip_connections and num_hidden % 2 == 0:
+        last_output_tensor = Add()([antipen_output_tensor, last_output_tensor])
+
+    flattended_last_tensor = Flatten(name='flatten')(last_output_tensor)
+
+    output_tensor = Dense(10, activation=softmax, name='dense_output')(flattended_last_tensor)
+
+    model = Model(input_tensor, output_tensor)
+
+    model.compile(loss=sparse_categorical_crossentropy,
+                  optimizer=Adam(),
+                  metrics=[sparse_categorical_accuracy])
+
+    return model
