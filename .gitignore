@@ -2,3 +2,5 @@
 *.tar.gz
 *.html
 __pycache__/
+logs/
+trained_models/
