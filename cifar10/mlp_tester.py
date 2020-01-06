@@ -8,8 +8,9 @@ if __name__ == "__main__":
 
     (train_data, train_labels), (val_data, val_labels) = cifar10.load_data()
 
-    nb_hidden_layers_list = [2, 3]
-    layers_size_list = [[10, 10], [5, 5, 5]]
+    nb_hidden_layers_list = [10, 10]
+    layers_size_list = [[128, 128, 128, 128, 128, 128, 128, 128, 128, 128],
+                        [256, 256, 256, 256, 256, 256, 256, 256, 256, 256]]
     layers_activation_list = ['relu', 'relu']
     output_activation_list = ['softmax', 'softmax']
     use_dropout_list = [False, False]
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     optimizer_list = [Adam(), Adam()]
     metrics_list = [['sparse_categorical_accuracy'], ['sparse_categorical_accuracy']]
 
-    epochs = [5]
+    epochs = [5000, 10000]
 
     models, descriptions = generateMlpModels(nb_hidden_layers_list,
                                       layers_size_list,
