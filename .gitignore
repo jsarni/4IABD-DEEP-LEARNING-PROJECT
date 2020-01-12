@@ -4,3 +4,5 @@
 __pycache__/
 logs/
 trained_models/
+*/logfile
+*.png
