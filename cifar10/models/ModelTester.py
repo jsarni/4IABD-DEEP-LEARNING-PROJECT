@@ -24,7 +24,7 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
                           batch_size=batch_size_p,
                           callbacks=[tensorboard_callback]
                           )
-            models[i].save(model_name)
+            # models[i].save(model_name)
 
             model_descr = "{};{};{}\n".format(models_descriptions[i], str(e), model_id)
             with open(".\\trained_models\\{}\\tested_{}_history.csv".format(model_type, model_type), "a") as f:
