@@ -6,10 +6,10 @@ if __name__ == "__main__":
 
     struct = UNetStructurer()
 
-    struct.nb_Conv2D_layers = 7
+    struct.nb_Conv2D_layers = 13
     struct.use_MaxPooling2D = True
-    struct.MaxPooling2D_position = [2]
+    struct.MaxPooling2D_position = [2, 4, 5]
 
     model = create_unet(struct)
-    plot_model(model, "unet_maxpool_upsampled_7.png")
+    plot_model(model, "unet_maxpool_upsampled_13.png")
     model.summary()
