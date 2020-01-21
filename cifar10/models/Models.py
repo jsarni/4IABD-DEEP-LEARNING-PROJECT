@@ -114,13 +114,12 @@ def generateMlpModels(nb_hidden_layers_list: list,
 
     return mlp_models, mlp_descriptions
 
-def generateRandoMlpStruc(same_layers_depth=True, min_nb_layers=5, max_nb_layers=40, min_layer_depth=32, max_layer_depth=512):
+def generateRandoMlpStruc(use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, same_layers_depth=True, min_nb_layers=5, max_nb_layers=40, min_layer_depth=32, max_layer_depth=512):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
     metrics = [['sparse_categorical_accuracy']]
     losses = ['sparse_categorical_crossentropy']
     optimizers = [Adam()]
-    regularisations = [True, False]
     possible_layers_sizes = []
     specific_size = min_layer_depth
     while specific_size <= max_layer_depth:
@@ -134,9 +133,9 @@ def generateRandoMlpStruc(same_layers_depth=True, min_nb_layers=5, max_nb_layers
     else:
         for i in range(nb_layers):
             layers_size.append(choice(possible_layers_sizes))
-    use_dropout = choice(regularisations)
-    use_l1l2 = choice(regularisations)
-    use_l1l2_output = choice(regularisations)
+    use_dropout = use_dropout
+    use_l1l2 = use_l1l2_hidden
+    use_l1l2_output = use_l1l2_output
     dropout_indexes = []
     dropout_value = 0.0
     if use_dropout:
@@ -280,6 +279,71 @@ def getUNetStructAsString(unet_structurer: UNetStructurer):
                                                                                 unet_structurer.optimizer.__class__.__name__,
                                                                                 " ".join([i for i in unet_structurer.metrics]),
                                                                                 unet_structurer.padding)
+
+def generateRandoUNetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=20):
+    layers_activations = ['softmax', 'relu', 'softplus', 'selu']
+    output_activations = ['softmax']
+    kernel_sizes = [(3, 3)]
+    filters = [32]
+    batch_sizes = [32]
+    metrics = [['sparse_categorical_accuracy']]
+    losses = ['sparse_categorical_crossentropy']
+    optimizers = [Adam()]
+    nb_layers = randint(min_nb_layers, max_nb_layers)
+    use_dropout = use_dropout
+    use_l1l2 = use_l1l2_hidden
+    use_l1l2_output = use_l1l2_output
+    dropout_indexes = []
+    dropout_value = 0.0
+    if use_dropout:
+        dropout_indexes_number = randint(1, nb_layers)
+        dropout_value = randint(0, 4) / 10
+        for j in range(dropout_indexes_number):
+            dropout_indexes.append(randint(1, nb_layers))
+    l1l2_indexes = []
+    l1_value = 0.0
+    l2_value = 0.0
+    if use_l1l2:
+        l1l2_indexes_number = randint(1, nb_layers)
+        for j in range(l1l2_indexes_number):
+            l1l2_indexes.append(randint(1, nb_layers))
+        l1_value = randint(5, 100)/1000
+        l2_value = randint(5, 100) / 1000
+
+    maxpool_indexes = []
+
+    if use_maxpool:
+        nb_maxpool_layers = randint(1, int(nb_layers/2))
+        for j in range(nb_maxpool_layers):
+            maxpool_indexes.append(randint(1, int(nb_layers/2)))
+
+    struct = UNetStructurer()
+
+    struct.nb_Conv2D_layers = nb_layers
+    struct.filter = choice(filters)
+    struct.kernel_size = choice(kernel_sizes)
+    struct.batch_size = choice(batch_sizes)
+    struct.input_shape = (32, 32, 3)
+    struct.conv2D_activation = choice(layers_activations)
+    struct.output_activation = choice(output_activations)
+    struct.use_MaxPooling2D = use_maxpool
+    struct.MaxPooling2D_position = maxpool_indexes
+    struct.use_dropout = use_dropout
+    struct.dropout_indexes = dropout_indexes
+    struct.dropout_value = dropout_value
+    struct.use_l1l2_regularisation_hidden_layers = use_l1l2_hidden
+    struct.use_l1l2_regularisation_output_layer = use_l1l2_output
+    struct.l1_value = l1_value
+    struct.l2_value = l2_value
+    struct.l1l2_regul_indexes = l1l2_indexes
+    struct.loss = choice(losses)
+    struct.optimizer = choice([optimizers])
+    struct.metrics = choice(metrics)
+    struct.padding = 'same'
+
+    return struct
+
+
 ################################################################## End of UNet Part ##########################################################################################
 
 #################################################################### Commons Part ###########################################################################################
