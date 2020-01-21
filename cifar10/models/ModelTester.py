@@ -27,7 +27,7 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
             # models[i].save(model_name)
 
             model_descr = "{};{};{}\n".format(models_descriptions[i], str(e), model_id)
-            with open(".\\trained_models\\{}\\tested_{}_history.csv".format(model_type, model_type), "a") as f:
+            with open(".\\trained_models\\mlp\\tested_{}_history.csv".format(model_type, model_type), "a") as f:
                 f.write(model_descr)
 
             trained_models += 1
