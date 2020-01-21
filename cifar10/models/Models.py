@@ -202,11 +202,7 @@ def create_unet(unet_struct: UNetStructurer):
     input_tensor = Input((32, 32, 3))
 
     layers_list = []
-    maxpool_layers_list = []
-    dropout_layers_list = []
-    tensors_list = []
     tensors_to_connect_list_1 = []
-    tensors_to_connect_list_2 = []
 
     for i in range(unet_struct.nb_Conv2D_layers):
         if unet_struct.use_l1l2_regularisation_hidden_layers and ((i + 1) in unet_struct.l1l2_regul_indexes):
@@ -247,8 +243,6 @@ def create_unet(unet_struct: UNetStructurer):
             layers_list[j - 1] = UpSampling2D(name=f"upsample_{j}")(layers_list[j - 1])
         tensors_to_connect_2 = layers_list[j-1]
         tensors_to_connect_1 = tensors_to_connect_list_1.pop()
-        # if unet_struct.use_MaxPooling2D and (j in unet_struct.MaxPooling2D_position):
-        #     layers_list[j - 1] = MaxPool2D(pool_size=(2, 2), name=f"maxpool_{j}")(layers_list[j - 1])
         # if unet_struct.use_dropout and (j in unet_struct.dropout_indexes):
         #     layers_list[j - 1] = Dropout(unet_struct.dropout_value, name=f"dropout_{j}")(layers_list[j - 1])
         avg_tensor = Average()([tensors_to_connect_2, tensors_to_connect_1])
@@ -262,12 +256,6 @@ def create_unet(unet_struct: UNetStructurer):
     model.compile(loss=unet_struct.loss, optimizer=unet_struct.optimizer, metrics=unet_struct.metrics)
 
     return model
-
-
-
-
-
-
 
 ################################################################## End of UNet Part ##########################################################################################
 
