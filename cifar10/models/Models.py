@@ -257,6 +257,29 @@ def create_unet(unet_struct: UNetStructurer):
 
     return model
 
+
+def getUNetStructAsString(unet_structurer: UNetStructurer):
+    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(unet_structurer.nb_Conv2D_layers,
+                                                                                unet_structurer.filter,
+                                                                                " ".join([str(i) for i in list(unet_structurer.kernel_size)]),
+                                                                                unet_structurer.batch_size,
+                                                                                " ".join([str(i) for i in list(unet_structurer.input_shape)]),
+                                                                                unet_structurer.conv2D_activation,
+                                                                                unet_structurer.output_activation,
+                                                                                unet_structurer.use_MaxPooling2D,
+                                                                                " ".join([str(i) for i in unet_structurer.MaxPooling2D_position]),
+                                                                                unet_structurer.use_dropout,
+                                                                                " ".join([str(i) for i in unet_structurer.dropout_indexes]),
+                                                                                unet_structurer.dropout_value,
+                                                                                unet_structurer.use_l1l2_regularisation_hidden_layers,
+                                                                                unet_structurer.use_l1l2_regularisation_output_layer,
+                                                                                unet_structurer.l1_value,
+                                                                                unet_structurer.l2_value,
+                                                                                " ".join([str(i) for i in unet_structurer.l1l2_regul_indexes]),
+                                                                                unet_structurer.loss,
+                                                                                unet_structurer.optimizer.__class__.__name__,
+                                                                                " ".join([i for i in unet_structurer.metrics]),
+                                                                                unet_structurer.padding)
 ################################################################## End of UNet Part ##########################################################################################
 
 #################################################################### Commons Part ###########################################################################################
