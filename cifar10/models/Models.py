@@ -133,6 +133,97 @@ def getMlpStructAsString(mlp_structurer):
 ################################################################## End of MLP Part ##########################################################################################
 
 
+
+
+################################################################# Resnet PArt###############################################################################################
+
+def create_model_resenet34(RsnetStruct: RsnetStructurer):
+
+
+    input_tensor = Input((32, 32, 3))
+    last_output_tensor = input_tensor
+
+    antipen_output_tensor = None
+    nb_skipped = 0
+    for i in range(RsnetStruct.nb_hidden_layers):
+        if RsnetStruct.use_skip and antipen_output_tensor is not None:
+            if nb_skipped == RsnetStruct.nb_skip:
+                add_tensor = Add()([antipen_output_tensor, last_output_tensor])
+                antipen_output_tensor = add_tensor
+                last_output_tensor = add_tensor
+                nb_skipped = 0
+
+                # Hidden layers L1L2 regularisation
+            if RsnetStruct.use_l1l2_regularisation_hidden_layers and ((i + 1) in RsnetStruct.regulization_indexes):
+                last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding, activation=RsnetStruct.layers_activation,
+                                            kernel_regularizer=L1L2(l1=RsnetStruct.l1_value, l2=RsnetStruct.l2_value), input_shape=(32, 32, 3),name=f"conv2d__L1L2_{i}")(last_output_tensor)
+            else:
+                last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding,
+                                                activation=RsnetStruct.layers_activation, input_shape=(32, 32, 3),name=f"conv2d_{i}")(last_output_tensor)
+            # Use dropout
+            if (RsnetStruct.use_dropout and (i + 1) in RsnetStruct.dropout_indexes):
+                    last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_{i}")(last_output_tensor)
+
+
+
+
+            nb_skipped += 1
+
+        else:
+            if( RsnetStruct.use_skip and i==0):
+
+                # Hidden layers L1L2 regularisation
+                if RsnetStruct.use_l1l2_regularisation_hidden_layers and ((i + 1) in RsnetStruct.regulization_indexes):
+                    last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding,activation=RsnetStruct.layers_activation,
+                                            kernel_regularizer=L1L2(l1=RsnetStruct.l1_value,  l2=RsnetStruct.l2_value),input_shape=(32, 32, 3),  name=f"conv2d__L1L2_{i}")(last_output_tensor)
+                else:
+                    last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding,
+                                                activation=RsnetStruct.layers_activation, input_shape=(32, 32, 3),name=f"conv2d_{i}")(last_output_tensor)
+                # Use dropout
+                if(RsnetStruct.use_dropout and (i+1) in RsnetStruct.dropout_indexes):
+                    last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_{i}")(last_output_tensor)
+
+                antipen_output_tensor= Dense(32, activation=RsnetStruct.layers_activation, name=f"dense_{i}")(input_tensor)
+
+
+            else:
+                antipen_output_tensor = input_tensor
+                # Hidden layers L1L2 regularisation
+                if RsnetStruct.use_l1l2_regularisation_hidden_layers and ((i + 1) in RsnetStruct.regulization_indexes):
+                    last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding,activation=RsnetStruct.layers_activation,
+                                            kernel_regularizer=L1L2(l1=RsnetStruct.l1_value,l2=RsnetStruct.l2_value),input_shape=(32, 32, 3),name=f"conv2d__L1L2_{i}")(last_output_tensor)
+                else:
+                    last_output_tensor = Conv2D(RsnetStruct.filters, RsnetStruct.kernel_size,padding=RsnetStruct.padding,
+                                                activation=RsnetStruct.layers_activation, input_shape=(32, 32, 3), name=f"conv2d_{i}")(last_output_tensor)
+                # Use dropout
+                if (RsnetStruct.use_dropout and (i + 1) in RsnetStruct.dropout_indexes):
+                    last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_{i}")(last_output_tensor)
+            nb_skipped += 1
+
+    if RsnetStruct.use_skip and RsnetStruct.nb_hidden_layers % RsnetStruct.nb_skip == 0:
+        last_output_tensor = Add()([antipen_output_tensor, last_output_tensor])
+
+    flattended_last_tensor = Flatten(name='flatten')(last_output_tensor)
+    if (RsnetStruct.use_l1l2_regularisation_output_layer):
+        output_tensor = Dense(10,RsnetStruct.output_activation, kernel_regularizer=L1L2(l1=RsnetStruct.l1_value,l2=RsnetStruct.l2_value),name='dense_output_L1L2')(flattended_last_tensor)
+    else:
+        output_tensor = Dense(10, RsnetStruct.output_activation, name='dense_output')(flattended_last_tensor)
+    model = Model(input_tensor, output_tensor)
+
+    model.compile(loss=RsnetStruct.loss,
+                  optimizer=RsnetStruct.optimizer,
+                  metrics=RsnetStruct.metrics)
+
+    return model
+
+
+
+
+
+
+######################################################### End Resnet #######################################################################################
+
+
 ################################################################## Commons Part ##########################################################################################
 def getRandomModelID():
     uid = randint(0, 10000000)
