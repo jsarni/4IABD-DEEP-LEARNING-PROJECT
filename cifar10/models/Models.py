@@ -140,7 +140,7 @@ def generateRandoMlpStruc(use_l1l2_hidden=False, use_l1l2_output=False, use_drop
     dropout_value = 0.0
     if use_dropout:
         dropout_indexes_number = randint(1, nb_layers)
-        dropout_value = randint(0, 4) / 10
+        dropout_value = randint(1, 3) / 10
         for j in range(dropout_indexes_number):
             dropout_indexes.append(randint(1, nb_layers))
     l1l2_indexes = []
@@ -173,17 +173,19 @@ def generateRandoMlpStruc(use_l1l2_hidden=False, use_l1l2_output=False, use_drop
     return struct
 
 def getMlpStructAsString(mlp_structurer):
-    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(mlp_structurer.nb_hidden_layers,
+    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(mlp_structurer.nb_hidden_layers,
                                                                     " ".join([str(i) for i in mlp_structurer.layers_size]),
                                                                     mlp_structurer.layers_activation,
                                                                     mlp_structurer.output_activation,
                                                                     mlp_structurer.use_dropout,
+                                                                    str(len(mlp_structurer.dropout_indexes)),
                                                                     " ".join([str(i) for i in mlp_structurer.dropout_indexes]),
                                                                     mlp_structurer.dropout_value,
                                                                     mlp_structurer.use_l1l2_regularisation_hidden_layers,
                                                                     mlp_structurer.use_l1l2_regularisation_output_layer,
                                                                     mlp_structurer.l1_value,
                                                                     mlp_structurer.l2_value,
+                                                                    str(len(mlp_structurer.regulization_indexes)),
                                                                     " ".join([str(i) for i in mlp_structurer.regulization_indexes]),
                                                                     mlp_structurer.loss,
                                                                     mlp_structurer.optimizer.__class__.__name__,
