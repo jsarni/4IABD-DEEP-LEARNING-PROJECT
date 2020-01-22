@@ -51,7 +51,7 @@ if __name__ == "__main__":
     # Automatic model testing
 
     ############################## 5 to 10 layers #########################
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=64, max_layer_depth=64)
         model = [create_custom_mlp(struct)]
         desc = [getMlpStructAsString(struct)]
@@ -60,7 +60,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=128, max_layer_depth=128)
         model = [create_custom_mlp(struct)]
         desc = [getMlpStructAsString(struct)]
@@ -69,7 +69,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=256, max_layer_depth=256)
         model = [create_custom_mlp(struct)]
         desc = [getMlpStructAsString(struct)]
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=512, max_layer_depth=512)
         model = [create_custom_mlp(struct)]
         desc = [getMlpStructAsString(struct)]
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     ########################################################################
 
     ############################## 20 to 30 layers #########################
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
                                        same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
                                        min_layer_depth=64, max_layer_depth=64)
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
                                        same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
                                        min_layer_depth=128, max_layer_depth=128)
@@ -114,7 +114,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
                                        same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
                                        min_layer_depth=256, max_layer_depth=256)
@@ -125,7 +125,7 @@ if __name__ == "__main__":
     del model
     del desc
 
-    for i in range(20):
+    for i in range(10):
         struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
                                        same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
                                        min_layer_depth=512, max_layer_depth=512)
