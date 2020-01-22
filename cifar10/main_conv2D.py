@@ -1,5 +1,6 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 from cifar10.DatasetLoader import *
+from cifar10.models.structurer.CNNStructurer import *
 from tensorflow.keras import layers, activations,models,optimizers,metrics,datasets
 import matplotlib.pyplot as plt
 import tensorflow as tf
@@ -7,42 +8,13 @@ import pickle as pk
 from datetime import datetime
 from tensorflow.keras.regularizers import *
 from tensorflow.keras.utils import *
-
-
-
-class CNNStructurer:
-
-    def __init__(self):
-        self.name = "cnn" #nom de la structure
-        self.nb_Conv2D_layers = 3 #nombre de couches cachées
-        self.Conv2D_size_layers = [(32,3),(32,3),(64,3)]  # [input,filter_dimension] dans l'appel on utilisera un couple ( filter_dimension,filter_dimension)
-        self.Conv2D_activation ='relu'
-        self.MaxPooling2D_use = True
-        self.MaxPooling2D_Position = [2,3] #Positionnement des couches Max2Pooling
-        self.MaxPooling2D_values = 2   #valeur du filtre Max2Pooling
-        self.nb_hidden_layers = 3 #nombre de Denses cachées
-        self.layers_size = []
-        self.layers_activation = 'relu' #activation
-        self.output_activation = 'softmax' #activation output
-        self.use_dropout = True
-        self.dropout_indexes = [2,3]
-        self.dropout_value = 0.01
-        self.use_l1l2_regularisation_Convolution_layers = True
-        self.use_l1l2_regularisation_hidden_layers = False
-        self.use_l1l2_regularisation_output_layer = True
-        self.l1_value = 0.02
-        self.l2_value = 0.03
-        self.regul_kernel_indexes = [1,2]
-        self.loss = 'sparse_categorical_crossentropy'
-        self.optimizer = 'Adam'
-        self.metrics = ['accuracy']
-
+from random import  randint,choice
 
 def create_CNN_model(cnn_struct:CNNStructurer):
     #format des données
     inputshape=(32,32,3)
     #vérification principale:
-    assert cnn_struct.nb_hidden_layers == len(cnn_struct.layers_size) and (cnn_struct.nb_Conv2D_layers==len(cnn_struct.Conv2D_size_layers)), "CNNStructurerError: CNN number of layers (nb_hidden_layers) is different of the total layers sizes number (layer_size) "
+    assert (cnn_struct.nb_Conv2D_layers==len(cnn_struct.Conv2D_size_layers)), "CNNStructurerError: CNN number of layers  is different of the total layers sizes number "
     #Déclaration du modèle
     model = models.Sequential()
     #création de la première couche de convolution avec vérification si la première couche admet une régularisation:
@@ -65,13 +37,13 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                   )
 
     #Création du reste des couches de convolution Conv2D et les MaxPooling2D
-    for i in range(len(cnn_struct.Conv2D_size_layers)):
+    for i in range(1,len(cnn_struct.Conv2D_size_layers)):
         #test if the layer has a MaxPooling
         if(cnn_struct.MaxPooling2D_use and i in cnn_struct.MaxPooling2D_Position):
 
             model.add(layers.MaxPool2D((cnn_struct.MaxPooling2D_values,cnn_struct.MaxPooling2D_values)))
         #voir si la couche admet une régularisation:
-        if  (i in cnn_struct.regul_kernel_indexes):
+        if  (i+1 in cnn_struct.regul_kernel_indexes):
             model.add(layers.Conv2D(cnn_struct.Conv2D_size_layers[i][0],
                                     (cnn_struct.Conv2D_size_layers[i][1],cnn_struct.Conv2D_size_layers[i][1]),
                                     kernel_regularizer=l1_l2(cnn_struct.l1_value, cnn_struct.l2_value),
@@ -88,55 +60,13 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                                     )
                       )
         # add dropout layer:
-        if (i in cnn_struct.dropout_indexes):
+        if (cnn_struct.use_dropout and i in cnn_struct.dropout_indexes):
                 model.add(layers.Dropout(cnn_struct.dropout_value))
-    """#Création de la dernière couche de convolution:
-    i=cnn_struct.nb_Conv2D_layers
-
-    model.add(layers.Conv2D(cnn_struct.Conv2D_size_layers[i][0],(cnn_struct.layers_size[i][1], cnn_struct.layers_size[i][1]),activations=cnn_struct.Conv2D_activation)
-        # Hidden layers L1L2 regularisation
-        if cnn_struct.use_l1l2_regularisation_hidden_layers and ((i + 1) in cnn_struct.regulization_indexes):
-            model.add(layers.Dense(cnn_struct.layers_size[i],
-                            activation=cnn_struct.layers_activation,
-                            kernel_regularizer=L1L2(l1=cnn_struct.l1_value, l2=cnn_struct.l2_value),
-                            name=f"dense_l1l2_{i}"
-                            )
-                      )
-        else:
-            model.add(Dense(cnn_struct.layers_size[i],
-                            activation=cnn_struct.layers_activation,
-                            name=f"dense_{i}"
-                            )
-                      )
-        if cnn_struct.use_dropout and ((i + 1) in cnn_struct.dropout_indexes):
-            model.add(Dropout(cnn_struct.dropout_value, name=f"dropout_{i}"))
-    """
-    ####
+    #fin de la boucle
     # ajout d'un flatten:
     model.add(layers.Flatten())
 
 
-    # Hidden layers L1L2 regularisation
-    for i in range(len(cnn_struct.nb_hidden_layers)):
-        if cnn_struct.use_l1l2_regularisation_hidden_layers and ((i + 1) in cnn_struct.regulization_indexes):
-            model.add(layers.Dense(cnn_struct.layers_size[i],
-                            activation=cnn_struct.layers_activation,
-                            kernel_regularizer=L1L2(l1=cnn_struct.l1_value, l2=cnn_struct.l2_value),
-                            name=f"dense_l1l2_{i}"
-                            )
-                      )
-        else:
-            model.add(layers.Dense(cnn_struct.layers_size[i],
-                            activation=cnn_struct.layers_activation,
-                            name=f"dense_{i}"
-                            )
-                      )
-        if cnn_struct.use_dropout and ((i + 1) in cnn_struct.dropout_indexes):
-            model.add(layers.Dropout(cnn_struct.dropout_value, name=f"dropout_{i}"))
-
-        # Output L1L2 regularisation
-
-
     if cnn_struct.use_l1l2_regularisation_output_layer:
         model.add(layers.Dense(10,
                         activation=cnn_struct.output_activation,
@@ -151,88 +81,167 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                         )
                   )
     ####
-    # Output L1L2 regularisation
-    if cnn_struct.use_l1l2_regularisation_output_layer:
-        model.add(layers.Dense(10,
-                        activation=cnn_struct.output_activation,
-                        kernel_regularizer=L1L2(l1=cnn_struct.l1_value, l2=cnn_struct.l2_value),
-                        name="output_l1l2"
-                        )
-                  )
-    else:
-        model.add(layers.Dense(10,
-                        activation=cnn_struct.output_activation,
-                        name="output"
-                        )
-                  )
+
 
     model.compile(loss=cnn_struct.loss, optimizer=cnn_struct.optimizer, metrics=cnn_struct.metrics)
-
+    model.summary()
+    plot_model(model,"model_architecture.png")
     return model
 
 
-if __name__ == "__main__":
-    #importation des données:
-    (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.cifar10.load_data()
-    #définition des noms des classes:
-    class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer',
-                   'dog', 'frog', 'horse', 'ship', 'truck']
-    #declaration de la structure:
-    cnn_mod=CNNStructurer()
-    #creation du modèle:
-    model=create_CNN_model(cnn_mod)
-    # #création du modèle:
-    # model = models.Sequential()
-    # #ajouter des couches de convolution:
-    # model.add(layers.Conv2D(32, (2, 2), activation='relu', input_shape=(32, 32, 3)))
-    # model.add(layers.MaxPooling2D((2, 2)))
-    #
-    # model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    # model.add(layers.MaxPooling2D((2, 2)))
-    #
-    # model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    #
-    #
-    # model.add(layers.Conv2D(64, (3, 3), activation='relu'))
-    # #applatir les données:
-    # model.add(layers.Flatten())
-    # model.add(layers.Dense(64, activation='relu'))
-    # model.add(layers.Dense(10, activation='softmax'))
-    # #afficher les détails :
-    # model.summary()
-    # #entrainer le model:
-    # model.compile(optimizer='adam',
-    #               loss='sparse_categorical_crossentropy',
-    #               metrics=['accuracy'])
 
-    #fit du modele:
-    history = model.fit(train_images, train_labels, epochs=8,batch_size=5024,
-                        validation_data=(test_images, test_labels))
-    print(history)
+######################################################création d'une strucure cnn####################################"
 
-    #Evaluer le model:
-    test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
-    print('résultat accuracy',test_acc)
-    print('résultat loss', test_loss)
-    #Sauvegarder les résultats:
+def generateCNNModels(    nb_Conv2D_layers_list: list,
+                          Conv2D_layers_size_list: list,
+                          Conv2D_activation_list: list,
+                          output_activation_list: list,
+                          MaxPooling2D_use_list : list,
+                          MaxPooling2D_Position_list :list,
+                          MaxPooling2D_values_list:list,
+                          use_dropout_list: list,
+                          dropout_indexes_list: list,
+                          dropout_value_list: list,
+                          use_l1l2_regularisation_Conv2D_layers_list: list,
+                          use_l1l2_regularisation_output_layer_list: list,
+                          l1_value_list: list,
+                          l2_value_list: list,
+                          regulization_indexes_list: list,
+                          loss_list: list,
+                          optimizer_list: list,
+                          metrics_list: list):
+    assert len(nb_Conv2D_layers_list) == len(Conv2D_layers_size_list)
+    assert len(nb_Conv2D_layers_list) == len(Conv2D_activation_list)
+    assert len(nb_Conv2D_layers_list) == len(output_activation_list)
+    assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_use_list)
+    assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_Position_list)
+    assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_values_list)
+    assert len(nb_Conv2D_layers_list) == len(use_dropout_list)
+    assert len(nb_Conv2D_layers_list) == len(dropout_indexes_list)
+    assert len(nb_Conv2D_layers_list) == len(dropout_value_list)
+    assert len(nb_Conv2D_layers_list) == len(use_l1l2_regularisation_Conv2D_layers_list)
+    assert len(nb_Conv2D_layers_list) == len(use_l1l2_regularisation_output_layer_list)
+    assert len(nb_Conv2D_layers_list) == len(l1_value_list)
+    assert len(nb_Conv2D_layers_list) == len(l2_value_list)
+    assert len(nb_Conv2D_layers_list) == len(regulization_indexes_list)
+    assert len(nb_Conv2D_layers_list) == len(loss_list)
+    assert len(nb_Conv2D_layers_list) == len(optimizer_list)
+    assert len(nb_Conv2D_layers_list) == len(metrics_list)
 
-    #Affichage des résultats:
-    plt.figure(figsize=(10, 10))
-    plt.plot(history.history['accuracy'], label='accuracy')
-    plt.plot(history.history['val_accuracy'], label='val_accuracy')
-    plt.xlabel('Epoch')
-    plt.ylabel('Accuracy')
-    plt.ylim([0.5, 1])
-    plt.legend(loc='lower right')
-    plt.show()
+    cnn_models = []
+    cnn_descriptions = []
 
-    #affichage du model:
-    plot_model(model, "./test.png")
-    """#logger les résultats:
-    dict_save={'Accuracy':history.history['accuracy'],'val-accuracy':history.history['val_accuracy'],'date-time':datetime.now()}
-    logging_file =open("./logfile","wb")
-    log=pk.dump(dict_save,logging_file)
-    logging_file.close()
-    """
+    current_structure = CNNStructurer()
 
+    for i in range(len(nb_Conv2D_layers_list)):
+        current_structure.nb_Conv2D_layers   = nb_Conv2D_layers_list[i]
+        current_structure.Conv2D_size_layers = Conv2D_layers_size_list[i]
+        current_structure.Conv2D_activation  = Conv2D_activation_list[i]
+        current_structure.output_activation  = output_activation_list[i]
+        current_structure.MaxPooling2D_use   = MaxPooling2D_use_list[i]
+        current_structure.MaxPooling2D_Position  = MaxPooling2D_Position_list[i]
+        current_structure.MaxPooling2D_values  =MaxPooling2D_values_list[i]
+        current_structure.use_dropout        = use_dropout_list[i]
+        current_structure.dropout_indexes    = dropout_indexes_list[i]
+        current_structure.dropout_value      = dropout_value_list[i]
+        current_structure.use_l1l2_regularisation_Convolution_layers = use_l1l2_regularisation_Conv2D_layers_list[i]
+        current_structure.use_l1l2_regularisation_output_layer = use_l1l2_regularisation_output_layer_list[i]
+        current_structure.l1_value = l1_value_list[i]
+        current_structure.l2_value = l2_value_list[i]
+        current_structure.regulization_indexes = regulization_indexes_list[i]
+        current_structure.loss = loss_list[i]
+        current_structure.optimizer = optimizer_list[i]
+        current_structure.metrics = metrics_list[i]
 
+        cnn_models.append(create_CNN_model(current_structure))
+        cnn_descriptions.append(getcnnStructAsString(current_structure))
+
+    return cnn_models, cnn_descriptions
+##
+def getcnnStructAsString(cnn_structurer):
+    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(cnn_structurer.nb_Conv2D_layers,
+                                                                    " ".join([str(i) for i in cnn_structurer.Conv2D_size_layers]),
+                                                                    cnn_structurer.Conv2D_activation,
+                                                                    cnn_structurer.output_activation,
+                                                                    cnn_structurer.MaxPooling2D_use,
+                                                                    cnn_structurer.MaxPooling2D_values,
+                                                                 " ".join([str(i) for i in cnn_structurer.MaxPooling2D_Position]),
+                                                                    cnn_structurer.use_dropout,
+                                                                    " ".join([str(i) for i in cnn_structurer.dropout_indexes]),
+                                                                    cnn_structurer.dropout_value,
+                                                                    cnn_structurer.use_l1l2_regularisation_Convolution_layers,
+                                                                    cnn_structurer.use_l1l2_regularisation_output_layer,
+                                                                    cnn_structurer.l1_value,
+                                                                    cnn_structurer.l2_value,
+                                                                    " ".join([str(i) for i in cnn_structurer.regulization_indexes]),
+                                                                    cnn_structurer.loss,
+                                                                    cnn_structurer.optimizer.__class__.__name__,
+                                                                    " ".join(cnn_structurer.metrics)
+                                                                    )
+
+def getRandomModelID():
+    uid = random.randint(0, 10000000)
+    return "{:07d}".format(uid)
+
+def generateRandoCNNStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=20):
+    layers_activations = ['softmax', 'relu', 'softplus', 'selu']
+    output_activations = ['softmax']
+    kernel_sizes = [(3, 3)]
+    filters = [32]
+    batch_sizes = [32]
+    metrics = [['sparse_categorical_accuracy']]
+    losses = ['sparse_categorical_crossentropy']
+    optimizers = [Adam()]
+    nb_layers = randint(min_nb_layers, max_nb_layers)
+    use_dropout = use_dropout
+    use_l1l2 = use_l1l2_hidden
+    use_l1l2_output = use_l1l2_output
+    dropout_indexes = []
+    dropout_value = 0.0
+    if use_dropout:
+        dropout_indexes_number = randint(1, nb_layers)
+        dropout_value = randint(0, 4) / 10
+        for j in range(dropout_indexes_number):
+            dropout_indexes.append(randint(1, nb_layers))
+    l1l2_indexes = []
+    l1_value = 0.0
+    l2_value = 0.0
+    if use_l1l2:
+        l1l2_indexes_number = randint(1, nb_layers)
+        for j in range(l1l2_indexes_number):
+            l1l2_indexes.append(randint(1, nb_layers))
+        l1_value = randint(5, 100)/1000
+        l2_value = randint(5, 100) / 1000
+
+    maxpool_indexes = []
+
+    if use_maxpool:
+        nb_maxpool_layers = randint(1, int(nb_layers/2))
+        for j in range(nb_maxpool_layers):
+            maxpool_indexes.append(randint(1, int(nb_layers/2)))
+
+    struct = CNNStructurer()
+
+    struct.nb_Conv2D_layers = nb_layers
+    struct.filter = choice(filters)
+    struct.kernel_size = choice(kernel_sizes)
+    struct.batch_size = choice(batch_sizes)
+    struct.input_shape = (32, 32, 3)
+    struct.conv2D_activation = choice(layers_activations)
+    struct.output_activation = choice(output_activations)
+    struct.use_MaxPooling2D = use_maxpool
+    struct.MaxPooling2D_position = maxpool_indexes
+    struct.use_dropout = use_dropout
+    struct.dropout_indexes = dropout_indexes
+    struct.dropout_value = dropout_value
+    struct.use_l1l2_regularisation_hidden_layers = use_l1l2_hidden
+    struct.use_l1l2_regularisation_output_layer = use_l1l2_output
+    struct.l1_value = l1_value
+    struct.l2_value = l2_value
+    struct.l1l2_regul_indexes = l1l2_indexes
+    struct.loss = choice(losses)
+    struct.optimizer = choice([optimizers])
+    struct.metrics = choice(metrics)
+    struct.padding = 'same'
+
+    return struct
