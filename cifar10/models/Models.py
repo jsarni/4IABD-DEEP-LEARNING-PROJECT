@@ -1,8 +1,10 @@
-from random import randint
+
+from random import randint, choice
 
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
 from tensorflow.keras.regularizers import *
+from tensorflow.keras.optimizers import *
 
 from cifar10.models.structurer.MlpStructurer import MlpStructurer
 from cifar10.models.structurer.RsnetStructurer import RsnetStructurer
