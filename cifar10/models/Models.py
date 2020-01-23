@@ -5,6 +5,7 @@ from tensorflow.keras.models import *
 from tensorflow.keras.regularizers import *
 
 from cifar10.models.structurer.MlpStructurer import MlpStructurer
+from cifar10.models.structurer.RsnetStructurer import RsnetStructurer
 
 
 ################################################################## Beginin of MLP Part ##########################################################################################
@@ -140,7 +141,7 @@ def getMlpStructAsString(mlp_structurer):
 def create_model_resenet34(RsnetStruct: RsnetStructurer):
 
 
-    input_tensor = Input((32, 32, 3))
+    input_tensor = Input(RsnetStruct.input_shape)
     last_output_tensor = input_tensor
 
     antipen_output_tensor = None
@@ -215,6 +216,99 @@ def create_model_resenet34(RsnetStruct: RsnetStructurer):
                   metrics=RsnetStruct.metrics)
 
     return model
+
+
+
+def getResetStructAsString(rsnet_structurer: RsnetStructurer):
+    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(rsnet_structurer.nb_hidden_layers,
+                                                                                rsnet_structurer.filters,
+                                                                                " ".join([str(i) for i in list(rsnet_structurer.kernel_size)]),
+                                                                                rsnet_structurer.batch_size,
+                                                                                " ".join([str(i) for i in list(rsnet_structurer.input_shape)]),
+                                                                                rsnet_structurer.layers_activation,
+                                                                                rsnet_structurer.output_activation,
+                                                                                rsnet_structurer.use_skip,
+                                                                                rsnet_structurer.nb_skip,
+                                                                                # unet_structurer.use_MaxPooling2D,
+                                                                                # " ".join([str(i) for i in unet_structurer.MaxPooling2D_position]),
+                                                                                rsnet_structurer.use_dropout,
+                                                                                " ".join([str(i) for i in rsnet_structurer.dropout_indexes]),
+                                                                                rsnet_structurer.dropout_value,
+                                                                                rsnet_structurer.use_l1l2_regularisation_hidden_layers,
+                                                                                rsnet_structurer.use_l1l2_regularisation_output_layer,
+                                                                                rsnet_structurer.l1_value,
+                                                                                rsnet_structurer.l2_value,
+                                                                                " ".join([str(i) for i in rsnet_structurer.regulization_indexes]),
+                                                                                rsnet_structurer.loss,
+                                                                                rsnet_structurer.optimizer.__class__.__name__,
+                                                                                " ".join([i for i in rsnet_structurer.metrics]),
+                                                                                rsnet_structurer.padding)
+
+def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True,nb_skip =2, min_nb_layers=3, max_nb_layers=10):
+    layers_activations = ['softmax', 'relu', 'softplus', 'selu']
+    output_activations = ['softmax']
+    kernel_sizes = [(3, 3)]
+    filters = [32]
+    batch_sizes = [256,512]
+    metrics = [['categorical_accuracy']]
+    losses = ['categorical_crossentropy']
+    optimizers = [Adam()]
+    nb_hidden_layers = randint(min_nb_layers, max_nb_layers)
+    use_dropout = use_dropout
+    use_l1l2 = use_l1l2_hidden
+    use_l1l2_output = use_l1l2_output
+    dropout_indexes = []
+    dropout_value = 0.0
+    if use_dropout:
+        dropout_indexes_number = randint(1, nb_hidden_layers)
+        dropout_value = randint(0, 4) / 10
+        for j in range(dropout_indexes_number):
+            dropout_indexes.append(randint(1, nb_hidden_layers))
+    l1l2_indexes = []
+    l1_value = 0.0
+    l2_value = 0.0
+    if use_l1l2:
+        l1l2_indexes_number = randint(1, nb_hidden_layers)
+        for j in range(l1l2_indexes_number):
+            l1l2_indexes.append(randint(1, nb_hidden_layers))
+        l1_value = randint(5, 100)/1000
+        l2_value = randint(5, 100) / 1000
+
+    # maxpool_indexes = []
+    #
+    # if use_maxpool:
+    #     nb_maxpool_layers = randint(1, int(nb_layers/2))
+    #     for j in range(nb_maxpool_layers):
+    #         maxpool_indexes.append(randint(1, int(nb_layers/2)))
+
+    struct = RsnetStructurer()
+
+    struct.nb_hidden_layers = nb_hidden_layers
+    struct.filters = choice(filters)
+    struct.kernel_size = choice(kernel_sizes)
+    struct.batch_size = choice(batch_sizes)
+    struct.use_skip=use_skip
+    struct.nb_skip=nb_skip
+    struct.input_shape = (32, 32, 3)
+    struct.layers_activation = choice(layers_activations)
+    struct.output_activation = choice(output_activations)
+    # struct.use_MaxPooling2D = use_maxpool
+    # struct.MaxPooling2D_position = maxpool_indexes
+    struct.use_dropout = use_dropout
+    struct.dropout_indexes = dropout_indexes
+    struct.dropout_value = dropout_value
+    struct.use_l1l2_regularisation_hidden_layers = use_l1l2_hidden
+    struct.use_l1l2_regularisation_output_layer = use_l1l2_output
+    struct.l1_value = l1_value
+    struct.l2_value = l2_value
+    struct.regulization_indexes = l1l2_indexes
+    struct.loss = choice(losses)
+    struct.optimizer = choice(optimizers)
+    struct.metrics = choice(metrics)
+    struct.padding = 'same'
+
+    return struct
+
 
 
 
