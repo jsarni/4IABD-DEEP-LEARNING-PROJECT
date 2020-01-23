@@ -339,7 +339,7 @@ def generateRandoUNetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_ou
     struct.l2_value = l2_value
     struct.l1l2_regul_indexes = l1l2_indexes
     struct.loss = choice(losses)
-    struct.optimizer = choice([optimizers])
+    struct.optimizer = choice(optimizers)
     struct.metrics = choice(metrics)
     struct.padding = 'same'
 

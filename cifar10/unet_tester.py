@@ -8,9 +8,9 @@ if __name__ == "__main__":
 
     epochs = [10]
 
-    while True:
+    for i in range(10):
         struct = generateRandoUNetStruc(min_nb_layers=7,max_nb_layers=7)
         model = [create_unet(struct)]
         desc = [getUNetStructAsString(struct)]
         print(desc[0])
-        test_models('unet', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=1)
+        test_models('unet', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=256)

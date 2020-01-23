@@ -30,7 +30,7 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
             val_accuracy = models[i].evaluate(test_ds, test_labels)
             print(val_accuracy[-1],train_accuracy[-1])
             model_descr = "{};{};{};{};{};{}\n".format(models_descriptions[i], str(e), model_id, str(train_accuracy[-1]), str(val_accuracy[-1]), cur_date)
-            with open(".\\trained_models\\mlp\\tested_{}_history.csv".format(model_type, model_type), "a") as f:
+            with open(".\\trained_models\\{}\\tested_{}_history.csv".format(model_type.split("_")[0], model_type, model_type), "a") as f:
                 f.write(model_descr)
 
             trained_models += 1

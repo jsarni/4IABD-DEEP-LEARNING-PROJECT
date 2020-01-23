@@ -6,3 +6,4 @@ logs/
 trained_models/
 *.png
 *-checkpoint.ipynb
+Analyse_test_mlp_run1-Copy1.ipynb
