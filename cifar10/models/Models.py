@@ -1,4 +1,6 @@
 from random import randint, choice
+import pandas as pd
+from math import isnan
 
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
@@ -191,7 +193,38 @@ def getMlpStructAsString(mlp_structurer):
                                                                     mlp_structurer.optimizer.__class__.__name__,
                                                                     " ".join(mlp_structurer.metrics)
                                                                     )
+def generateStructsFromCSV(file: str):
+    structs_descriptions = pd.read_csv(file, sep=';')
+    structs_descriptions = structs_descriptions.sort_values('nb_couches', ascending=True)
+    structs = []
 
+    for i, row in structs_descriptions.iterrows():
+        struct = MlpStructurer()
+        struct.nb_hidden_layers = row['nb_couches']
+        struct.layers_size = [int(x) for x in row['profondeurs_couches'].split(' ')]
+        struct.layers_activation = row['activation_couches']
+        struct.output_activation = row['activation_output']
+        struct.use_dropout = row['dropout']
+        if isnan(row['indexes_dropout']):
+            struct.dropout_indexes = []
+        else:
+            struct.dropout_indexes = [int(x) for x in row['indexes_dropout'].split(' ')]
+        struct.dropout_value = row['valeur_dropout']
+        struct.use_l1l2_regularisation_hidden_layers = row['l1l2_couches']
+        struct.use_l1l2_regularisation_output_layer = row['l1l2_output']
+        struct.l1_value = row['valeur_l1']
+        struct.l2_value = row['valeur_l2']
+        if isnan(row['indexes_l1l2']):
+            struct.regulization_indexes = []
+        else:
+            struct.regulization_indexes = [int(x) for x in row['indexes_l1l2'].split(' ')]
+        struct.loss = row['loss']
+        struct.optimizer = row['optimizer']
+        struct.metrics = [str(x) for x in row['metrics'].split(' ')]
+
+        structs.append(struct)
+
+    return structs
 
 ################################################################## End of MLP Part ##########################################################################################
 
