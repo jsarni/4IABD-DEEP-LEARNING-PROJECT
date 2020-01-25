@@ -252,9 +252,9 @@ def getResetStructAsString(rsnet_structurer: RsnetStructurer):
 def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True,nb_skip =2, min_nb_layers=3, max_nb_layers=10):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
-    kernel_sizes = [(3, 3),(2,2),(4,4)]
+    kernel_sizes = [(3, 3)]
     filters = [32]
-    batch_sizes = [64,128]
+    batch_sizes = [512]
     metrics = [['categorical_accuracy']]
     losses = ['categorical_crossentropy']
     optimizers = [Adam()]

@@ -1,6 +1,6 @@
 from tensorflow.keras.callbacks import TensorBoard
 from cifar10.models.Models import getRandomModelID
-
+from tensorflow.keras.utils import plot_model
 
 def test_models(model_type, models, models_descriptions, train_ds, train_labels, test_ds, test_labels, epochs_p, batch_size_p=4096):
 
