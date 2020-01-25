@@ -17,5 +17,5 @@ class MlpStructurer:
         self.l2_value = 0.0
         self.regulization_indexes = []
         self.loss = 'sparse_categorical_crossentropy'
-        self.optimizer = Adam()
+        self.optimizer = 'Adam'
         self.metrics = ['sparse_categorical_accuracy']
