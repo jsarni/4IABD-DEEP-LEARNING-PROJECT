@@ -174,6 +174,8 @@ def create_model_resenet34(RsnetStruct: RsnetStructurer):
 
         else:
             if( RsnetStruct.use_skip and i==0):
+                if (RsnetStruct.use_dropout and i in RsnetStruct.dropout_indexes):
+                    last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_input")(last_output_tensor)
 
                 # Hidden layers L1L2 regularisation
                 if RsnetStruct.use_l1l2_regularisation_hidden_layers and ((i + 1) in RsnetStruct.regulization_indexes):
@@ -186,7 +188,8 @@ def create_model_resenet34(RsnetStruct: RsnetStructurer):
                 if(RsnetStruct.use_dropout and (i+1) in RsnetStruct.dropout_indexes):
                     last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_{i}")(last_output_tensor)
 
-                antipen_output_tensor= Dense(32, activation=RsnetStruct.layers_activation, name=f"dense_{i}")(input_tensor)
+                antipen_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_input")(input_tensor)
+                antipen_output_tensor= Dense(RsnetStruct.filters, activation=RsnetStruct.layers_activation, name=f"dense_{i}")(input_tensor)
 
 
             else:
@@ -249,9 +252,9 @@ def getResetStructAsString(rsnet_structurer: RsnetStructurer):
 def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True,nb_skip =2, min_nb_layers=3, max_nb_layers=10):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
-    kernel_sizes = [(3, 3)]
+    kernel_sizes = [(3, 3),(2,2),(4,4)]
     filters = [32]
-    batch_sizes = [256,512]
+    batch_sizes = [64,128]
     metrics = [['categorical_accuracy']]
     losses = ['categorical_crossentropy']
     optimizers = [Adam()]
