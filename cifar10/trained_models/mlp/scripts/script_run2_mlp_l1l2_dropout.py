@@ -1,4 +1,4 @@
-from cifar10.models.Models import *
+from cifar10.models.MLP import *
 from cifar10.models.ModelTester import test_models
 from tensorflow.keras.datasets import cifar10
 from tensorflow.keras.backend import clear_session

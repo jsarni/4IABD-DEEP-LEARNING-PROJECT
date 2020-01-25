@@ -1,5 +1,5 @@
 from cifar10.models.ModelTester import *
-from cifar10.models.Models import *
+from cifar10.models.MLP import *
 from tensorflow.keras.optimizers import *
 from tensorflow.keras.datasets import cifar10
 
