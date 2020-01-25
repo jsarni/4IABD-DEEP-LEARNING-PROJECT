@@ -1,0 +1,11 @@
+nb_couches;profondeurs_couches;activation_couches;activation_output;dropout;nb_dropout;indexes_dropout;valeur_dropout;l1l2_couches;l1l2_output;valeur_l1;valeur_l2;nb_l1l2;indexes_l1l2;loss;optimizer;metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
+11;64 64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;6125165;0.1;0.1;20200122
+10;64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;2001962;0.1;0.1;20200122
+12;64 64 64 64 64 64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;5546244;0.51078;0.4331;20200122
+14;64 64 64 64 64 64 64 64 64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;2528856;0.6055;0.4451;20200122
+10;64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;6264842;0.1;0.1;20200122
+12;64 64 64 64 64 64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;3889449;0.54962;0.4593;20200122
+10;64 64 64 64 64 64 64 64 64 64;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;4417340;0.51136;0.4498;20200122
+10;64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;7774846;0.1;0.1;20200122
+13;64 64 64 64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;2966324;0.1;0.1;20200122
+13;64 64 64 64 64 64 64 64 64 64 64 64 64;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;2731862;0.51266;0.4438;20200122
