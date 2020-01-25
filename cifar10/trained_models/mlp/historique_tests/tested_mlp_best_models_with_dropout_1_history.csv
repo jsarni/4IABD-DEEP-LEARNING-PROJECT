@@ -1,0 +1,2 @@
+nb_couches;profondeurs_couches;activation_couches;activation_output;dropout;nb_dropout;indexes_dropout;valeur_dropout;l1l2_couches;l1l2_output;valeur_l1;valeur_l2;nb_l1l2;indexes_l1l2;loss;optimizer;metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
+11;512 512 512 512 512 512 512 512 512 512 512;softplus;softmax;True;1;0;0.1;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;str;sparse_categorical_accuracy;500;7440109;0.99682;0.4608;20200124

@@ -1,9 +1,7 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
-from cifar10.DatasetLoader import *
 from tensorflow.keras import layers
 from tensorflow.keras.backend import clear_session
 import tensorflow as tf
-from cifar10.DatasetLoader import *
 
 if __name__ == "__main__":
     #déclaration des param:

@@ -1,0 +1,11 @@
+nb_couches;profondeurs_couches;activation_couches;activation_output;dropout;nb_dropout;indexes_dropout;valeur_dropout;l1l2_couches;l1l2_output;valeur_l1;valeur_l2;nb_l1l2;indexes_l1l2;loss;optimizer;metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
+8;256 256 256 256 256 256 256 256;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;3875420;0.1;0.1;20200122
+6;256 256 256 256 256 256;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;9998078;0.57488;0.4902;20200122
+9;256 256 256 256 256 256 256 256 256;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;3712251;0.84092;0.4537;20200122
+5;256 256 256 256 256;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;0500458;0.57378;0.4588;20200122
+8;256 256 256 256 256 256 256 256;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;6310408;0.77586;0.4668;20200122
+9;256 256 256 256 256 256 256 256 256;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;9815569;0.70862;0.4683;20200122
+8;256 256 256 256 256 256 256 256;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;9099548;0.1;0.1;20200122
+5;256 256 256 256 256;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;5193080;0.1;0.1;20200122
+5;256 256 256 256 256;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;7921448;0.52296;0.4604;20200122
+9;256 256 256 256 256 256 256 256 256;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;1810420;0.66124;0.4783;20200122
