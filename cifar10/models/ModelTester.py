@@ -18,9 +18,9 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
             model_id = getRandomModelID()
 
             if save_image:
-                plot_model(models[i], '{}{}_{}.png'.format(images_dir, model_type, model_id))
                 if not os.path.exists(images_dir):
                     os.makedirs(images_dir)
+                plot_model(models[i], '{}{}_{}.png'.format(images_dir, model_type, model_id))
             log_name = logs_dir + model_type + '_' + model_id + '.log'
             model_name = fit_models_dir + model_type + '_' + model_id + '.h5'
             tensorboard_callback = TensorBoard(log_dir=log_name)
