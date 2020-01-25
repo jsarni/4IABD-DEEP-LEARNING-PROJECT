@@ -92,7 +92,7 @@ def create_CNN_model(cnn_struct:CNNStructurer):
 
     model.compile(loss=cnn_struct.loss, optimizer=cnn_struct.optimizer, metrics=cnn_struct.metrics)
     model.summary()
-    plot_model(model,"model_architecture.png")
+    plot_model(model,"./trained_models/cnn/model_architecture.png")
     return model
 
 
@@ -203,11 +203,18 @@ def nb_maxPooling2D_usedmax(filter:int,kernel:int):
         filter = int(filter / kernel)
     return res
 
-def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8):
+def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8,min_filter_size=32,max_filter_size=64):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
     kernel_sizes =randint(2,5)
-    filters = [32,64,128]
+    #génération des filtres des convolutions:
+    filters = []
+    i=min_filter_size
+    while(i<=max_filter_size):
+        filters.append(i)
+        i=i*2
+    #fin de la génération
+
     metrics = [['accuracy']]
     losses = ['sparse_categorical_crossentropy']
     optimizers = ['Adam']

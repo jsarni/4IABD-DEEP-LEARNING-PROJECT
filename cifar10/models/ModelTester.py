@@ -1,11 +1,12 @@
 from tensorflow.keras.callbacks import TensorBoard
 from cifar10.models.Models import getRandomModelID
+from datetime import date
 
 
 def test_models(model_type, models, models_descriptions, train_ds, train_labels, test_ds, test_labels, epochs_p, batch_size_p=4096):
-
-    logs_dir = '.\\logs\\{}\\'.format(model_type)
-    fit_models_dir = '.\\trained_models\\{}\\'.format(model_type)
+    cur_date = date.today().strftime("%Y%m%d")
+    logs_dir = '..\\logs\\{}\\{}\\'.format(model_type, cur_date)
+    fit_models_dir = '..\\trained_models\\{}\\saved_models\\'.format(model_type.split("_")[0])
     trained_models = 0
 
     for e in epochs_p:
@@ -21,16 +22,18 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
                           validation_data=(test_ds, test_labels),
                           epochs=e,
                           batch_size=batch_size_p,
-                          callbacks=[tensorboard_callback]
+                          callbacks=[tensorboard_callback],
+                          verbose=2
                           )
-            models[i].save(model_name)
+            # models[i].save(model_name)
 
-            model_descr = "{};{};{}\n".format(models_descriptions[i], str(e), model_id)
-            with open(".\\trained_models\\{}\\tested_{}_history.csv".format(model_type, model_type), "a") as f:
+            train_accuracy = models[i].evaluate(train_ds, train_labels)
+            val_accuracy = models[i].evaluate(test_ds, test_labels)
+            print(val_accuracy[-1],train_accuracy[-1])
+            model_descr = "{};{};{};{};{};{}\n".format(models_descriptions[i], str(e), model_id, str(train_accuracy[-1]), str(val_accuracy[-1]), cur_date)
+            with open("..\\trained_models\\{}\\historique_tests\\tested_{}_history.csv".format(model_type.split("_")[0], model_type), "a") as f:
                 f.write(model_descr)
 
             trained_models += 1
 
     return trained_models
-
-
