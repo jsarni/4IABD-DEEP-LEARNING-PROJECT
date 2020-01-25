@@ -1,5 +1,5 @@
 from tensorflow.keras.callbacks import TensorBoard
-from cifar10.models.Models import getRandomModelID
+from cifar10.models.Rsnet import getRandomModelID
 from datetime import date
 from tensorflow.keras.utils import plot_model
 import os

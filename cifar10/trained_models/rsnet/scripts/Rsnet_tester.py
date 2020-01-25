@@ -1,7 +1,7 @@
 from cifar10.models.ModelTester import *
 from tensorflow.keras.backend import clear_session
 from tensorflow.keras.datasets import cifar10
-from cifar10.models.Models import *
+from cifar10.models.Rsnet import *
 import tensorflow as tf
 
 
