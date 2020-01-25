@@ -6,3 +6,6 @@ logs/
 trained_models/
 */logfile
 *.png
+*.rar
+
+

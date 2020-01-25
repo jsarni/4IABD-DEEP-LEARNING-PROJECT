@@ -15,6 +15,7 @@ class CNNStructurer():
         self.nb_Conv2D_layers = 3  # nombre de couches cachées
         self.Conv2D_size_layers = [(32, 3), (32, 3), (64, 3)]  # [input,filter_dimension] dans l'appel on utilisera un couple ( filter_dimension,filter_dimension)
         self.Conv2D_activation = 'relu'
+        self.Conv2D_padding='same'
         self.MaxPooling2D_use = True
         self.MaxPooling2D_Position = [2, 3]  # Positionnement des couches Max2Pooling
         self.MaxPooling2D_values = 3  # valeur du filtre Max2Pooling

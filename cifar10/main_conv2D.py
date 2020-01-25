@@ -25,17 +25,22 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                                 kernel_regularizer=l1_l2(cnn_struct.l1_value,cnn_struct.l2_value),
                                 activation=cnn_struct.Conv2D_activation,
                                 input_shape=inputshape,
-                                name="Input_with_l1_l2"
+                                padding=cnn_struct.Conv2D_padding,
+                                name="Conv_0_with_l1_l2"
                                 )
                   )
     else:
         model.add(layers.Conv2D(cnn_struct.Conv2D_size_layers[0][0],
                                 (cnn_struct.Conv2D_size_layers[0][1], cnn_struct.Conv2D_size_layers[0][1]),
-                                activation=cnn_struct.Conv2D_activation, input_shape=inputshape,
-                                name="Input"
+                                activation=cnn_struct.Conv2D_activation,
+                                input_shape=inputshape,
+                                padding=cnn_struct.Conv2D_padding,
+                                name="Conv_0"
                                 )
                   )
-
+    #tester si l'input admet un DropOut:
+    if(cnn_struct.use_dropout and 0 in cnn_struct.dropout_indexes):
+        model.add(layers.Dropout(cnn_struct.dropout_value))
     #Création du reste des couches de convolution Conv2D et les MaxPooling2D
     for i in range(1,len(cnn_struct.Conv2D_size_layers)):
         #test if the layer has a MaxPooling
@@ -48,6 +53,7 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                                     (cnn_struct.Conv2D_size_layers[i][1],cnn_struct.Conv2D_size_layers[i][1]),
                                     kernel_regularizer=l1_l2(cnn_struct.l1_value, cnn_struct.l2_value),
                                     activation=cnn_struct.Conv2D_activation,
+                                    padding=cnn_struct.Conv2D_padding,
                                     name=f"Conv_with_l1_l2_{i}"
                                     )
                       )
@@ -56,6 +62,7 @@ def create_CNN_model(cnn_struct:CNNStructurer):
                                     (cnn_struct.Conv2D_size_layers[i][1], cnn_struct.Conv2D_size_layers[i][1]),
                                     kernel_regularizer=l1_l2(cnn_struct.l1_value, cnn_struct.l2_value),
                                     activation=cnn_struct.Conv2D_activation,
+                                    padding=cnn_struct.Conv2D_padding,
                                     name=f"Conv_{i}"
                                     )
                       )
@@ -96,6 +103,7 @@ def generateCNNModels(    nb_Conv2D_layers_list: list,
                           Conv2D_layers_size_list: list,
                           Conv2D_activation_list: list,
                           output_activation_list: list,
+                          Conv2D_padding_list: list,
                           MaxPooling2D_use_list : list,
                           MaxPooling2D_Position_list :list,
                           MaxPooling2D_values_list:list,
@@ -113,6 +121,7 @@ def generateCNNModels(    nb_Conv2D_layers_list: list,
     assert len(nb_Conv2D_layers_list) == len(Conv2D_layers_size_list)
     assert len(nb_Conv2D_layers_list) == len(Conv2D_activation_list)
     assert len(nb_Conv2D_layers_list) == len(output_activation_list)
+    assert len(nb_Conv2D_layers_list) == len(Conv2D_padding_list)
     assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_use_list)
     assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_Position_list)
     assert len(nb_Conv2D_layers_list) == len(MaxPooling2D_values_list)
@@ -137,6 +146,7 @@ def generateCNNModels(    nb_Conv2D_layers_list: list,
         current_structure.nb_Conv2D_layers   = nb_Conv2D_layers_list[i]
         current_structure.Conv2D_size_layers = Conv2D_layers_size_list[i]
         current_structure.Conv2D_activation  = Conv2D_activation_list[i]
+        current_structure.Conv2D_padding=Conv2D_padding_list[i]
         current_structure.output_activation  = output_activation_list[i]
         current_structure.MaxPooling2D_use   = MaxPooling2D_use_list[i]
         current_structure.MaxPooling2D_Position  = MaxPooling2D_Position_list[i]
@@ -159,10 +169,11 @@ def generateCNNModels(    nb_Conv2D_layers_list: list,
     return cnn_models, cnn_descriptions
 ##
 def getcnnStructAsString(cnn_structurer):
-    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(cnn_structurer.nb_Conv2D_layers,
+    return "{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{};{}".format(cnn_structurer.nb_Conv2D_layers,
                                                                     " ".join([str(i) for i in cnn_structurer.Conv2D_size_layers]),
                                                                     cnn_structurer.Conv2D_activation,
                                                                     cnn_structurer.output_activation,
+                                                                    cnn_structurer.Conv2D_padding,
                                                                     cnn_structurer.MaxPooling2D_use,
                                                                     cnn_structurer.MaxPooling2D_values,
                                                                  " ".join([str(i) for i in cnn_structurer.MaxPooling2D_Position]),
@@ -173,39 +184,48 @@ def getcnnStructAsString(cnn_structurer):
                                                                     cnn_structurer.use_l1l2_regularisation_output_layer,
                                                                     cnn_structurer.l1_value,
                                                                     cnn_structurer.l2_value,
-                                                                    " ".join([str(i) for i in cnn_structurer.regulization_indexes]),
+                                                                    " ".join([str(i) for i in cnn_structurer.regul_kernel_indexes]),
                                                                     cnn_structurer.loss,
                                                                     cnn_structurer.optimizer.__class__.__name__,
-                                                                    " ".join(cnn_structurer.metrics)
+                                                                    " ".join([str(i) for i in cnn_structurer.metrics])
                                                                     )
 
 def getRandomModelID():
     uid = random.randint(0, 10000000)
     return "{:07d}".format(uid)
+#cette fonction nous renvoi le nombre max de MaxPooling2D qu'on peut appliqeur avec un kernel précis.
+def nb_maxPooling2D_usedmax(filter:int,kernel:int):
+    res = 0
+    if(filter>=kernel):
+        res=1
+    while (int(filter / kernel) >= kernel):
+        res += 1
+        filter = int(filter / kernel)
+    return res
 
-def generateRandoCNNStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=20):
+def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
-    kernel_sizes = [(3, 3)]
-    filters = [32]
-    batch_sizes = [32]
-    metrics = [['sparse_categorical_accuracy']]
+    kernel_sizes =randint(2,5)
+    filters = [32,64,128]
+    metrics = [['accuracy']]
     losses = ['sparse_categorical_crossentropy']
-    optimizers = [Adam()]
+    optimizers = ['Adam']
     nb_layers = randint(min_nb_layers, max_nb_layers)
     use_dropout = use_dropout
-    use_l1l2 = use_l1l2_hidden
+    use_l1l2 = use_l1l2_conv
     use_l1l2_output = use_l1l2_output
     dropout_indexes = []
     dropout_value = 0.0
     if use_dropout:
-        dropout_indexes_number = randint(1, nb_layers)
+        dropout_indexes_number = randint(0, nb_layers)
         dropout_value = randint(0, 4) / 10
         for j in range(dropout_indexes_number):
-            dropout_indexes.append(randint(1, nb_layers))
+            dropout_indexes.append(randint(0, nb_layers))
     l1l2_indexes = []
     l1_value = 0.0
     l2_value = 0.0
+    ##faut faire une boucle à la longueur des layers et tirer des layers
     if use_l1l2:
         l1l2_indexes_number = randint(1, nb_layers)
         for j in range(l1l2_indexes_number):
@@ -214,34 +234,33 @@ def generateRandoCNNStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_out
         l2_value = randint(5, 100) / 1000
 
     maxpool_indexes = []
-
     if use_maxpool:
-        nb_maxpool_layers = randint(1, int(nb_layers/2))
+        nb_maxpool_layers = randint(0, nb_maxPooling2D_usedmax(32,kernel_sizes))
         for j in range(nb_maxpool_layers):
-            maxpool_indexes.append(randint(1, int(nb_layers/2)))
+            maxpool_indexes.append(randint(1,nb_layers))
+    filter_size=[]
+    for i in range(nb_layers):
+        filter_size.append((choice(filters),kernel_sizes))
 
     struct = CNNStructurer()
-
     struct.nb_Conv2D_layers = nb_layers
-    struct.filter = choice(filters)
-    struct.kernel_size = choice(kernel_sizes)
-    struct.batch_size = choice(batch_sizes)
-    struct.input_shape = (32, 32, 3)
-    struct.conv2D_activation = choice(layers_activations)
+    struct.Conv2D_size_layers =filter_size
+    struct.Conv2D_activation = choice(layers_activations)
     struct.output_activation = choice(output_activations)
     struct.use_MaxPooling2D = use_maxpool
     struct.MaxPooling2D_position = maxpool_indexes
+    struct.MaxPooling2D_values=kernel_sizes
     struct.use_dropout = use_dropout
     struct.dropout_indexes = dropout_indexes
     struct.dropout_value = dropout_value
-    struct.use_l1l2_regularisation_hidden_layers = use_l1l2_hidden
+    struct.use_l1l2_regularisation_Convolution_layers= use_l1l2_conv
     struct.use_l1l2_regularisation_output_layer = use_l1l2_output
     struct.l1_value = l1_value
     struct.l2_value = l2_value
-    struct.l1l2_regul_indexes = l1l2_indexes
+    struct.regul_kernel_indexes = l1l2_indexes
     struct.loss = choice(losses)
-    struct.optimizer = choice([optimizers])
-    struct.metrics = choice(metrics)
-    struct.padding = 'same'
+    struct.optimizer = choice(optimizers)
+    struct.metrics = [choice(metrics)]
+    struct.Conv2D_padding = 'same'
 
     return struct
