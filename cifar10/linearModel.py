@@ -50,35 +50,3 @@ print("--------------------------it's done--------------------------")
 linClassifier.compile(optimizer='adam', loss='binary_crossentropy', metrics='accuracy')
 linClassifier.fit(train_data, train_labels, batch_size= 100, epochs=10)
 linClassifier.predict(val_data, batch_size=100)
-
-"""
-# Split the data into train, val, and test sets. In addition we will
-# create a small development set as a subset of the training data;
-# we can use this for development so our code runs faster.
-num_training = 49000
-num_validation = 1000
-num_test = 1000
-num_dev = 500
-
-# Our validation set will be num_validation points from the original
-# training set.
-mask = range(num_training, num_training + num_validation)
-X_val = train_data[mask]
-y_val = train_labels[mask]
-
-
-mask = range(num_training)
-X_train = train_data[mask]
-y_train = train_labels[mask]
-
-mask = np.random.choice(num_training, num_dev, replace=False)
-X_dev = X_train[mask]
-y_dev = y_train[mask]
-
-mask = range(num_test)
-X_test = val_data[mask]
-y_test = val_labels[mask]
-
-"""
-
-
