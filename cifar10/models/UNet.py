@@ -54,8 +54,6 @@ def create_unet(unet_struct: UNetStructurer):
             layers_list[j - 1] = UpSampling2D(name=f"upsample_{j}")(layers_list[j - 1])
         tensors_to_connect_2 = layers_list[j-1]
         tensors_to_connect_1 = tensors_to_connect_list_1.pop()
-        # if unet_struct.use_dropout and (j in unet_struct.dropout_indexes):
-        #     layers_list[j - 1] = Dropout(unet_struct.dropout_value, name=f"dropout_{j}")(layers_list[j - 1])
         avg_tensor = Average()([tensors_to_connect_2, tensors_to_connect_1])
         layers_list[j] = layers_list[j](avg_tensor)
 
