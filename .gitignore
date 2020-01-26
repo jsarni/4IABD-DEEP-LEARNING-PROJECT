@@ -2,5 +2,7 @@
 *.tar.gz
 *.html
 __pycache__/
-logs/
-trained_models/
+cifar10/logs/
+*-checkpoint.ipynb
+Analyse_test_mlp_run1-Copy1.ipynb
+.ipynb_checkpoints/
