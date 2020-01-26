@@ -47,7 +47,7 @@ def create_model_resenet34(RsnetStruct: RsnetStructurer):
 
         else:
             if( RsnetStruct.use_skip and i==0):
-                if (RsnetStruct.use_dropout and i in RsnetStruct.dropout_indexes):
+                if (RsnetStruct.use_dropout):
                     last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_input")(last_output_tensor)
 
                 # Hidden layers L1L2 regularisation
@@ -61,8 +61,17 @@ def create_model_resenet34(RsnetStruct: RsnetStructurer):
                 if(RsnetStruct.use_dropout and (i+1) in RsnetStruct.dropout_indexes):
                     last_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_{i}")(last_output_tensor)
 
-                antipen_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_input")(input_tensor)
-                antipen_output_tensor= Dense(RsnetStruct.filters, activation=RsnetStruct.layers_activation, name=f"dense_{i}")(input_tensor)
+                if(RsnetStruct.use_dropout):
+                    antipen_output_tensor = Dropout(RsnetStruct.dropout_value, name=f"dropout_input_dense")(
+                        input_tensor)
+                    antipen_output_tensor = Dense(RsnetStruct.filters, activation=RsnetStruct.layers_activation,
+                                                  name=f"dense_{i}")(antipen_output_tensor)
+                else:
+                    antipen_output_tensor = Dense(RsnetStruct.filters, activation=RsnetStruct.layers_activation,
+                                                  name=f"dense_{i}")(input_tensor)
+
+
+
 
 
             else:
@@ -122,12 +131,12 @@ def getResetStructAsString(rsnet_structurer: RsnetStructurer):
                                                                                 " ".join([i for i in rsnet_structurer.metrics]),
                                                                                 rsnet_structurer.padding)
 
-def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True,nb_skip =2, min_nb_layers=3, max_nb_layers=10):
+def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True,nb_skip =2, min_nb_layers=3, max_nb_layers=10,filters=32):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
     kernel_sizes = [(3, 3)]
-    filters = [32]
-    batch_sizes = [512]
+    # filters = [32]
+    batch_sizes = [256]
     metrics = [['categorical_accuracy']]
     losses = ['categorical_crossentropy']
     optimizers = [Adam()]
@@ -162,7 +171,7 @@ def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_
     struct = RsnetStructurer()
 
     struct.nb_hidden_layers = nb_hidden_layers
-    struct.filters = choice(filters)
+    struct.filters = filters
     struct.kernel_size = choice(kernel_sizes)
     struct.batch_size = choice(batch_sizes)
     struct.use_skip=use_skip
@@ -189,8 +198,3 @@ def generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_
 
 
 
-
-################################################################## Commons Part ##########################################################################################
-def getRandomModelID():
-    uid = randint(0, 10000000)
-    return "{:07d}".format(uid)

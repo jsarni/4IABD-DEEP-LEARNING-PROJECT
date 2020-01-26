@@ -10,17 +10,209 @@ train_labels =tf.keras.utils.to_categorical(train_labels, 10)
 val_labels = tf.keras.utils.to_categorical(val_labels, 10)
 epochs = [30]
 
-############################# 3 à 6 Conv2D sans droupout et sans regul ###############################################
+# #### 3 32 regul ####
+# for i in range(3):
+#     clear_session()
+#     struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=3, max_nb_layers=3)
+#     model = [create_model_resenet34(struct)]
+#     desc = [getResetStructAsString(struct)]
+#     test_models('rsnet_regul_3_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+#                 epochs_p=epochs,
+#                 batch_size_p=struct.batch_size)
+#     # struct.batch_size
+#     clear_session()
+# del model
+# del desc
+#
+#
+#
+# #### 3 64 regul ####
+# for i in range(3):
+#     clear_session()
+#     struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=3, max_nb_layers=3)
+#     model = [create_model_resenet34(struct)]
+#     desc = [getResetStructAsString(struct)]
+#     test_models('rsnet_regul_3_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+#                 epochs_p=epochs,
+#                 batch_size_p=struct.batch_size)
+#     # struct.batch_size
+#     clear_session()
+# del model
+# del desc
+#
+
+
+#### 3 32 regul  drop ####
+# for i in range(3):
+#     clear_session()
+#     struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=3, max_nb_layers=3)
+#     model = [create_model_resenet34(struct)]
+#     desc = [getResetStructAsString(struct)]
+#     test_models('rsnet_rg_dr_3_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+#                 epochs_p=epochs,
+#                 batch_size_p=struct.batch_size)
+#     # struct.batch_size
+#     clear_session()
+# del model
+# del desc
+
+
+
+# #### 3 64 regul drop  ####
+# for i in range(3):
+#     clear_session()
+#     struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=3, max_nb_layers=3)
+#     model = [create_model_resenet34(struct)]
+#     desc = [getResetStructAsString(struct)]
+#     test_models('rsnet_rg_dr_3_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+#                 epochs_p=epochs,
+#                 batch_size_p=struct.batch_size)
+#     # struct.batch_size
+#     clear_session()
+# del model
+# del desc
+
+
+
+
+
+
+
+
+
+###### 4 32  ####
 for i in range(3):
-    struct = generateRandomRsnetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=3, max_nb_layers=3)
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
     model = [create_model_resenet34(struct)]
     desc = [getResetStructAsString(struct)]
-    test_models('rsnet_3_32', model, desc, train_data, train_labels, val_data, val_labels,
+    test_models('rsnet_4_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
                 epochs_p=epochs,
                 batch_size_p=struct.batch_size)
+    # struct.batch_size
     clear_session()
 del model
 del desc
+
+
+
+###### 4 64  ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_4_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+
+###### 4 32  drop  ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_dropout_4_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+###### 4 64 drop ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_dropout_4_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+
+
+###### 4 32  regul  ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_regul_4_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+###### 4 64 regul ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=False, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_regul_4_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+
+
+
+###### 4 32  regul  drop  ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=32, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_rg_dr_4_32', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
+
+###### 4 64 regul drop  ####
+for i in range(3):
+    clear_session()
+    struct = generateRandomRsnetStruc(use_maxpool=False,filters=64, use_l1l2_hidden=True, use_l1l2_output=True, use_dropout=True, use_skip = True ,nb_skip =2, min_nb_layers=4, max_nb_layers=4)
+    model = [create_model_resenet34(struct)]
+    desc = [getResetStructAsString(struct)]
+    test_models('rsnet_rg_dr_4_64', model, desc, train_data, train_labels, val_data, val_labels,save_image=True,
+                epochs_p=epochs,
+                batch_size_p=struct.batch_size)
+    # struct.batch_size
+    clear_session()
+del model
+del desc
+
+
 
 ############################# 6 à 8 Conv2D sans droupout et sans regul ###############################################
 # for i in range(10):

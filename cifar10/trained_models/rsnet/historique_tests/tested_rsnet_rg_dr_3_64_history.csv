@@ -1,0 +1,3 @@
+3;64;3 3;256;32 32 3;relu;softmax;True;2;True;3;0.0;True;True;0.052;0.1;2 3;categorical_crossentropy;Adam;categorical_accuracy;same;30;3690766;0.29334;0.2922;20200126
+3;64;3 3;256;32 32 3;selu;softmax;True;2;True;1;0.0;True;True;0.041;0.037;2 2 2;categorical_crossentropy;Adam;categorical_accuracy;same;30;6029104;0.39952;0.3929;20200126
+3;64;3 3;256;32 32 3;relu;softmax;True;2;True;1;0.4;True;True;0.007;0.083;3;categorical_crossentropy;Adam;categorical_accuracy;same;30;7153531;0.3192;0.3131;20200126
