@@ -1,10 +1,9 @@
 from cifar10.models.ModelTester import *
-from cifar10.models.Models import *
 from tensorflow.keras.optimizers import *
 from tensorflow.keras.datasets import cifar10
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Flatten
 import matplotlib.pyplot as plt
 import numpy as np
 
