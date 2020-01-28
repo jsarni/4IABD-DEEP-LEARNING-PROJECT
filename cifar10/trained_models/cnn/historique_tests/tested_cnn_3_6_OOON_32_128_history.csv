@@ -1,0 +1,2 @@
+6;(128, 4) (64, 4) (128, 4) (32, 4) (32, 4) (32, 4);selu;softmax;same;True;4;6 6;True;;0.2;True;False;0.032;0.051;3;sparse_categorical_crossentropy;str;['accuracy'];30;6106508;0.4992;0.4944;20200126
+5;(64, 5) (64, 5) (128, 5) (64, 5) (32, 5);softplus;softmax;same;True;5;3 5;True;3 5;0.3;True;False;0.05;0.049;1 2 5;sparse_categorical_crossentropy;str;['accuracy'];30;4155926;0.1;0.1;20200126

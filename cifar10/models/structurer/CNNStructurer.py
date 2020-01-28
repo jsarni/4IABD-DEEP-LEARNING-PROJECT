@@ -1,6 +1,5 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 from tensorflow.keras.optimizers import *
-from cifar10.DatasetLoader import *
 import random
 from tensorflow.keras import layers, activations,models,optimizers,metrics,datasets
 import matplotlib.pyplot as plt

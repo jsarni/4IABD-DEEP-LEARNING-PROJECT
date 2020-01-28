@@ -1,0 +1,2 @@
+3;(32, 2) (64, 2) (64, 2);softmax;softmax;same;True;2;2 3 2 1;True;3;0.1;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;8082320;0.6432;0.6177;20200127
+5;(32, 3) (32, 3) (32, 3) (32, 3) (32, 3);relu;softmax;same;True;3;3;True;;0.1;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;0186676;0.9098;0.6647;20200127

@@ -1,0 +1,7 @@
+8;(128, 4) (128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.022;True;True;0.012;0.025;;sparse_categorical_crossentropy;str;accuracy;30;6122335;0.97594;0.7174;20200127
+8;(128, 4) (128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.022;True;True;0.012;0.025;6;sparse_categorical_crossentropy;str;accuracy;50;1799197;0.97602;0.7199;20200127
+8;(64, 4) (128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.022;True;True;0.012;0.025;6;sparse_categorical_crossentropy;str;accuracy;50;5084237;0.95958;0.7042;20200127
+8;(128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.022;True;True;0.012;0.025;7;sparse_categorical_crossentropy;str;accuracy;50;1760125;0.98344;0.7313;20200127
+8;(128, 4) (128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.025;True;True;0.012;0.025;6;sparse_categorical_crossentropy;str;accuracy;150;6817867;0.99196;0.7287;20200127
+8;(128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.025;True;True;0.012;0.025;7;sparse_categorical_crossentropy;str;accuracy;30;0275590;0.95916;0.7291;20200128
+8;(128, 4) (128, 4) (64, 4) (64, 4) (64, 4) (32, 4) (32, 4) (32, 4);relu;softmax;same;True;4;1 4;True;0 4 6;0.025;True;True;0.012;0.025;2 7;sparse_categorical_crossentropy;str;accuracy;200;4872526;0.9596;0.6103;20200128

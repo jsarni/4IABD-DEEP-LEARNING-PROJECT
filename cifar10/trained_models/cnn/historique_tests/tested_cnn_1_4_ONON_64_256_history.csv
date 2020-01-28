@@ -1,0 +1,6 @@
+2;(64, 5) (64, 5);selu;softmax;same;True;5;1;False;;0.0;True;False;0.037;0.093;2 2;sparse_categorical_crossentropy;str;['accuracy'];30;4602469;0.57868;0.5707;20200126
+3;(64, 2) (256, 2) (64, 2);softplus;softmax;same;True;2;3 2 2 2 1;False;;0.0;True;False;0.006;0.03;3 3;sparse_categorical_crossentropy;str;['accuracy'];30;0228629;0.63564;0.6082;20200126
+1;(64, 5);selu;softmax;same;True;5;;False;;0.0;True;False;0.032;0.038;1;sparse_categorical_crossentropy;str;['accuracy'];30;2464492;0.50768;0.3689;20200126
+1;(128, 5);softmax;softmax;same;True;5;1 1;False;;0.0;True;False;0.082;0.016;1;sparse_categorical_crossentropy;str;['accuracy'];30;2378820;0.9306;0.5092;20200126
+4;(64, 4) (64, 4) (128, 4) (256, 4);selu;softmax;same;True;4;1 2;False;;0.0;True;False;0.085;0.02;3 2;sparse_categorical_crossentropy;str;['accuracy'];30;2522786;0.1;0.1;20200126
+3;(64, 2) (64, 2) (256, 2);softplus;softmax;same;True;2;2 3;False;;0.0;True;False;0.023;0.094;3 1 2;sparse_categorical_crossentropy;str;['accuracy'];30;5161805;0.63336;0.5543;20200126

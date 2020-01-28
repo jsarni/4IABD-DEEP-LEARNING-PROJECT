@@ -1,0 +1,3 @@
+Conv2D_nb; Conv2D_size; Conv2D_activation; output_activation; Conv2D_padding; MaxPooling2D_use; MaxPooling2D_values; MaxPooling2D_Position; use_dropout; dropout_indexes; dropout_value; use_l1l2_regularisation_Convolution_layers; use_l1l2_regularisation_output_layer; l1_value; l2_value; regul_kernel_indexes; loss; optimizer; metrics; ;epochs;model_id;train_accuracy;val_accuracy;dossier
+4;(32, 3) (32, 3) (64, 3) (64, 3);selu;softmax;same;True;3;1 3;False;0;0;False;0;0;0;;sparse_categorical_crossentropy;str;accuracy;30;1370402;0.87158;0.6539;20200126
+4;(32, 3) (32, 3) (64, 3) (64, 3);selu;softmax;same;True;3;1 3;False;0;0;True;False;0.001;0.002;;sparse_categorical_crossentropy;str;accuracy;30;9917944;0.7556;0.698;20200126

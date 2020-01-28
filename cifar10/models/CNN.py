@@ -47,7 +47,7 @@ def create_CNN_model(cnn_struct:CNNStructurer):
 
             model.add(layers.MaxPool2D((cnn_struct.MaxPooling2D_values,cnn_struct.MaxPooling2D_values)))
         #voir si la couche admet une régularisation:
-        if  (i+1 in cnn_struct.regul_kernel_indexes):
+        if  (cnn_struct.use_l1l2_regularisation_Convolution_layers and i+1 in cnn_struct.regul_kernel_indexes):
             model.add(layers.Conv2D(cnn_struct.Conv2D_size_layers[i][0],
                                     (cnn_struct.Conv2D_size_layers[i][1],cnn_struct.Conv2D_size_layers[i][1]),
                                     kernel_regularizer=l1_l2(cnn_struct.l1_value, cnn_struct.l2_value),
@@ -59,7 +59,6 @@ def create_CNN_model(cnn_struct:CNNStructurer):
         else:
             model.add(layers.Conv2D(cnn_struct.Conv2D_size_layers[i][0],
                                     (cnn_struct.Conv2D_size_layers[i][1], cnn_struct.Conv2D_size_layers[i][1]),
-                                    kernel_regularizer=l1_l2(cnn_struct.l1_value, cnn_struct.l2_value),
                                     activation=cnn_struct.Conv2D_activation,
                                     padding=cnn_struct.Conv2D_padding,
                                     name=f"Conv_{i}"
@@ -91,12 +90,12 @@ def create_CNN_model(cnn_struct:CNNStructurer):
 
     model.compile(loss=cnn_struct.loss, optimizer=cnn_struct.optimizer, metrics=cnn_struct.metrics)
     model.summary()
-    plot_model(model,"./trained_models/cnn/model_architecture.png")
+    #plot_model(model,"./trained_models/cnn/model_architecture.png")
     return model
 
 
 
-######################################################création d'une strucure cnn####################################"
+######################################################création de modèles et leurs descriptions  cnn ####################################"
 
 def generateCNNModels(    nb_Conv2D_layers_list: list,
                           Conv2D_layers_size_list: list,
@@ -157,7 +156,7 @@ def generateCNNModels(    nb_Conv2D_layers_list: list,
         current_structure.use_l1l2_regularisation_output_layer = use_l1l2_regularisation_output_layer_list[i]
         current_structure.l1_value = l1_value_list[i]
         current_structure.l2_value = l2_value_list[i]
-        current_structure.regulization_indexes = regulization_indexes_list[i]
+        current_structure.regul_kernel_indexes = regulization_indexes_list[i]
         current_structure.loss = loss_list[i]
         current_structure.optimizer = optimizer_list[i]
         current_structure.metrics = metrics_list[i]
@@ -202,7 +201,7 @@ def nb_maxPooling2D_usedmax(filter:int,kernel:int):
         filter = int(filter / kernel)
     return res
 
-def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8,min_filter_size=32,max_filter_size=64):
+def generateRandoCNNStruc(use_maxpool=True, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8,min_filter_size=32,max_filter_size=64):
     layers_activations = ['softmax', 'relu', 'softplus', 'selu']
     output_activations = ['softmax']
     kernel_sizes =randint(2,5)
@@ -224,14 +223,13 @@ def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_outpu
     dropout_indexes = []
     dropout_value = 0.0
     if use_dropout:
-        dropout_indexes_number = randint(0, nb_layers)
+        dropout_indexes_number = randint(0, int(nb_layers/2))
         dropout_value = randint(0, 4) / 10
         for j in range(dropout_indexes_number):
             dropout_indexes.append(randint(0, nb_layers))
     l1l2_indexes = []
     l1_value = 0.0
     l2_value = 0.0
-    ##faut faire une boucle à la longueur des layers et tirer des layers
     if use_l1l2:
         l1l2_indexes_number = randint(1, nb_layers)
         for j in range(l1l2_indexes_number):
@@ -253,8 +251,8 @@ def generateRandoCNNStruc(use_maxpool=False, use_l1l2_conv=False, use_l1l2_outpu
     struct.Conv2D_size_layers =filter_size
     struct.Conv2D_activation = choice(layers_activations)
     struct.output_activation = choice(output_activations)
-    struct.use_MaxPooling2D = use_maxpool
-    struct.MaxPooling2D_position = maxpool_indexes
+    struct.MaxPooling2D_use = use_maxpool
+    struct.MaxPooling2D_Position = maxpool_indexes
     struct.MaxPooling2D_values=kernel_sizes
     struct.use_dropout = use_dropout
     struct.dropout_indexes = dropout_indexes

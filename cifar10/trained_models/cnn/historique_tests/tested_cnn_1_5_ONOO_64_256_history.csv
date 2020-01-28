@@ -1,0 +1,1 @@
+3;(64, 2) (128, 2) (256, 2);softplus;softmax;same;True;2;3 1 1;False;;0.0;True;True;0.045;0.09;2 2 2;sparse_categorical_crossentropy;str;['accuracy'];30;7629246;0.1;0.1;20200126

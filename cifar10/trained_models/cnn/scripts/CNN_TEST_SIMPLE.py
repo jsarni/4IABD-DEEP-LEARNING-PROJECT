@@ -3,6 +3,9 @@ from tensorflow.keras import layers
 from tensorflow.keras.backend import clear_session
 import tensorflow as tf
 
+from cifar10.models.CNN import *
+from cifar10.models.ModelTester import test_models
+
 if __name__ == "__main__":
     #déclaration des param:
     epochs=[30]
@@ -203,73 +206,63 @@ if __name__ == "__main__":
 
     # #-----------------------------------------------------------------------------------------------------------------------------------------------------------------#
     clear_session()
-    ##32-128##
-    # ############################## 3 to 6 layers  N N N 32 128 #########################
+    #32-128##
+    ############################## 3 to 6 layers  O N N 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=True,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_N_N_N_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
-    #     del model
-    #     del desc
-
-    # ############################## 3 to 6 layers  O N N 32 128 #########################
-    # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
-    #     model = [create_CNN_model(struct)]
-    #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_O_N_N_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_OONN_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
     # ############################## 3 to 6 layers  O O N 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=True,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=True,use_l1l2_conv=True,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_O_O_N_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_OOON_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
-
+    #
     # ############################## 3 to 6 layers  O N O 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=True,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_O_N_O_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_OONO_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
-
+    #
     # ############################## 3 to 6 layers  N N O 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_N_N_O_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_ONNO_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
-
+    #
     # ############################## 3 to 6 layers  O N O 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=True,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_O_N_O_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_OONO_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
-
-    ############################## 3 to 6 layers  N O O 32 128 #########################
+    #
+    # ############################# 3 to 6 layers  N O O 32 128 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=128)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
-    #     test_models('cnn_3_6_N_O_O_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #     test_models('cnn_3_6_ONOO_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256)
     #     del model
     #     del desc
 
@@ -285,7 +278,6 @@ if __name__ == "__main__":
 
     #     # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
     clear_session()
-    ##32-256
     ##32-256##
     # ############################## 3 to 6 layers  N N N 32 256 #########################
     # for i in range(3):
@@ -356,96 +348,291 @@ if __name__ == "__main__":
     #     del model
     #     del desc
 
-    ############################## 3 to 6 layers  O O O 32 256 #########################
+    # ############################# 3 to 6 layers  O O O 32 256 #########################
     # for i in range(3):
-    #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=256)
+    #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=256)
     #     model = [create_CNN_model(struct)]
     #     desc = [getcnnStructAsString(struct)]
     #     test_models('cnn_3_6_O_O_O_32_256', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-    #                 batch_size_p=512)
+    #                 batch_size_p=2048)
     #     del model
     #     del desc
-
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # clear_session()
+    #
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=False,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=64)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_O_O_O_32_64', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=1024,save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=128)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_O_N_O_N_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,batch_size_p=1024,save_image=True)
+    #     del model
+    #     del desc
     # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=False,use_dropout=True,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=128)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_NONN_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs, batch_size_p=256,save_image=True)
+    #     del model
+    #     del desc
+    # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=128)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_ONNO_32_128', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256,save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=256)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_ONNO_32_256', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=256,save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=3,min_filter_size=32,max_filter_size=512)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_3_ONNO_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=512,save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+    # ##Scirpt du 26 01 2020 :
+    # # ######################## CNN 3-6 O N O N 32 512 #########################
+    # for i in range(3):
+    #     clear_session()
+    #     struct =generateRandoCNNStruc(use_maxpool=True,use_dropout=False,use_l1l2_conv=True,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_6_ONON_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
+    #                 batch_size_p=512,save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # epochs=[100]
+    # ##Scirpt du 26 01 2020 :
+    # # ######################## CNN 3-8 O N O N 32 512 #########################
+    # for i in range(3):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=True, use_dropout=False, use_l1l2_conv=True, use_l1l2_output=False,
+    #                                    min_nb_layers=3, max_nb_layers=8, min_filter_size=32, max_filter_size=512)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_8_ONON_32_512', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=512, save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+
+    ##Scirpt du 26 01 2020 :
+
+    ##Scirpt du 26 01 2020 :
+    # ######################## CNN 3-8 O O O O 32 256 #########################
+    # à lancer le 26 01 2020:
+    # for i in range(3):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=True, use_dropout=False, use_l1l2_conv=True, use_l1l2_output=False,
+    #                                    min_nb_layers=3, max_nb_layers=8, min_filter_size=32, max_filter_size=256)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_8_OOOO_32_256', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=256, save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # ##Scirpt du 26 01 2020 :
+    # # ######################## CNN 3-8 N N O N 32 256 #########################
+    # for i in range(3):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=False, use_dropout=False, use_l1l2_conv=True, use_l1l2_output=False,
+    #                                    min_nb_layers=3, max_nb_layers=8, min_filter_size=32, max_filter_size=256)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_8_NNON_32_256', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=512, save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # ##Scirpt du 26 01 2020 :
+    # # ######################## CNN 3-12 N O O N 32 256 #########################
+    # for i in range(3):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=False, use_dropout=True, use_l1l2_conv=True, use_l1l2_output=False,
+    #                                    min_nb_layers=3, max_nb_layers=6, min_filter_size=32, max_filter_size=256)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_3_12_NOON_32_256', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=512, save_image=True)
+    #     del model
+    #     del desc
+    # # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
+    # (modelcnn,desccnn)=generateCNNModels([7],[[(128,3),(128,3),(128,3),(64,3),(64,3),(32,3),(32,3)]],['relu'],['softmax'],['same'],[True],[[1,2,5]],[3],[True],[[0]],[0.25],[True],[True],[0.002],[0.003],[[0,4,6]],['sparse_categorical_crossentropy'],['Adam'],[['accuracy']])
+    #
+    # test_models('cnn_7_7_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=128, save_image=True)
+    # clear_session()
+    # (modelcnn, desccnn) = generateCNNModels([7], [[(128, 3), (128, 3), (64, 3), (64, 3), (32, 3), (32, 3), (32, 3)]],
+    #                                         ['relu'], ['softmax'], ['same'], [True], [[1, 2, 5]], [3], [True], [[0]],
+    #                                         [0.25], [True], [False], [0.002], [0.003], [[0, 4, 6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_7_7_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=128, save_image=True)
+    # clear_session()
+    # (modelcnn, desccnn) = generateCNNModels([7], [[(256, 3), (64, 3), (128, 3), (64, 3), (64, 3), (32, 3), (32, 3)]],
+    #                                         ['relu'], ['softmax'], ['same'], [True], [[1, 2, 5]], [3], [True], [[0]],
+    #                                         [0.25], [True], [True], [0.002], [0.003], [[0, 4, 6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_7_7_OOOO_32_256', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=128, save_image=True)
+    # clear_session()
+    # (modelcnn, desccnn) = generateCNNModels([7], [[(128, 3), (128, 3), (128, 3), (64, 3), (64, 3), (32, 3), (32, 3)]],
+    #                                         ['selu'], ['softmax'], ['same'], [True], [[1, 2, 5]], [3], [True], [[0]],
+    #                                         [0.25], [True], [True], [0.002], [0.003], [[0, 4, 6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_7_7_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=128, save_image=True)
+    # clear_session()
+    # (modelcnn, desccnn) = generateCNNModels([7], [[(128, 3), (64, 3), (64, 3), (64, 3), (32, 3), (32, 3), (32, 3)]],
+    #                                         ['relu'], ['softmax'], ['same'], [True], [[1, 2, 5]], [3], [True], [[0]],
+    #                                         [0.15], [True], [True], [0.001], [0.003], [[0, 4, 6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_7_7_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=128, save_image=True)
+    # 27/01/2020----19h50
+    # clear_session()
+    # epochs=[150]
+    # (modelcnn, desccnn) = generateCNNModels([8],[[(128, 4),(128, 4),(128, 4),(64, 4), (64, 4) ,(64, 4) ,(32, 4) ,(32, 4)]],
+    #                                         ['relu'],['softmax'],['same'],[True],[[1,4]],[4],[True],[[0,4,6]],
+    #                                         [0.025],[True],[True],[0.012],[0.025],[[6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=256, save_image=True)
+    # # ######################## CNN 3-12 N O O N 32 256 #########################
+    # for i in range(3):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=True, use_dropout=True, use_l1l2_conv=True, use_l1l2_output=False,
+    #                                    min_nb_layers=8, max_nb_layers=8, min_filter_size=32, max_filter_size=128)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_8_8_NOON_32_128', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=256, save_image=True)
+    #     del model
+    #     del desc
+    #
+    # clear_session()
+    # (modelcnn, desccnn) = generateCNNModels([8], [[(64, 4),(128, 4),(128, 4),(64, 4),(64, 4),(64, 4),(32, 4),(32, 4)]],
+    #                                         ['relu'], ['softmax'], ['same'], [True], [[1, 4]], [4], [True], [[0, 4, 6]],
+    #                                         [0.025], [True], [True], [0.012], [0.025], [[6]],
+    #                                         ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+    #
+    # test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+    #             epochs_p=epochs,
+    #             batch_size_p=256, save_image=True)
+    # clear_session()
+    #testes 28/01/2020 08h22
+    epochs=[200]
+    (modelcnn, desccnn) = generateCNNModels([8], [[(128, 4),(128, 4),(64, 4),(64, 4),(64, 4),(32, 4),(32, 4),(32, 4)]],
+                                            ['relu'], ['softmax'], ['same'], [True], [[1, 4]], [4], [True], [[0, 4, 6]],
+                                            [0.025], [True], [True], [0.012], [0.025], [[2,7]],
+                                            ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+
+    test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+                epochs_p=epochs,
+                batch_size_p=256, save_image=True)
     clear_session()
-    #32-512
-        # ############################## 3 to 6 layers  N N N 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_N_N_N_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
 
-        # ############################## 3 to 6 layers  O N N 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_O_N_N_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
-        # ############################## 3 to 6 layers  O O N 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=True,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_O_O_N_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
+    (modelcnn, desccnn) = generateCNNModels([8], [
+        [(128, 4), (128, 4), (64, 4), (64, 4), (64, 4), (32, 4), (32, 4), (32, 4)]],
+                                            ['relu'], ['softmax'], ['same'], [True], [[1, 4]], [4], [True], [[0, 4, 6]],
+                                            [0.028], [True], [True], [0.012], [0.025], [[2,3,7]],
+                                            ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
 
-        # ############################## 3 to 6 layers  O N O 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_O_N_O_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
+    test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+                epochs_p=epochs,
+                batch_size_p=256, save_image=True)
+    clear_session()
 
-        # ############################## 3 to 6 layers  N N O 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=False,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_N_N_O_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
+    (modelcnn, desccnn) = generateCNNModels([8], [
+        [(128, 4), (128, 4), (64, 4), (64, 4), (64, 4), (32, 4), (32, 4), (32, 4)]],
+                                            ['relu'], ['softmax'], ['same'], [True], [[1, 5]], [4], [True], [[0, 4, 6]],
+                                            [0.025], [True], [True], [0.012], [0.025], [[3,7]],
+                                            ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
 
-        # ############################## 3 to 6 layers  O N N 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=False,use_l1l2_output=False,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_O_N_O_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
+    test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+                epochs_p=epochs,
+                batch_size_p=256, save_image=True)
+    clear_session()
 
-        # ############################## 3 to 6 layers  N O O 32 512 #########################
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=False,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_N_O_O_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        #     del model
-        #     del desc
+    (modelcnn, desccnn) = generateCNNModels([8], [
+        [(128, 4), (128, 4), (64, 4), (64, 4), (64, 4), (32, 4), (32, 4), (32, 4)]],
+                                            ['relu'], ['softmax'], ['same'], [True], [[1, 5]], [4], [True], [[0, 4, 6]],
+                                            [0.025], [True], [True], [0.012], [0.035], [[3, 7]],
+                                            ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
 
-        ############################## 3 to 6 layers  O O O 32 512 #########################
+    test_models('cnn_8_8_OOOO_32_128', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+                epochs_p=epochs,
+                batch_size_p=256, save_image=True)
+    clear_session()
 
-        # for i in range(3):
-        #     struct =generateRandoCNNStruc(use_dropout=True,use_l1l2_conv=True,use_l1l2_output=True,min_nb_layers=3,max_nb_layers=6,min_filter_size=32,max_filter_size=512)
-        #     model = [create_CNN_model(struct)]
-        #     desc = [getcnnStructAsString(struct)]
-        #     test_models('cnn_3_6_O_O_O_32_512', model, desc, train_images, train_labels, test_images, test_labels, epochs_p=epochs,
-        #                 batch_size_p=512)
-        # del model
-        # del desc
-        # clear_session()
+    for i in range(3):
+        clear_session()
+        struct = generateRandoCNNStruc(use_maxpool=True, use_dropout=True, use_l1l2_conv=True, use_l1l2_output=False,
+                                       min_nb_layers=8, max_nb_layers=8, min_filter_size=32, max_filter_size=128)
+        model = [create_CNN_model(struct)]
+        desc = [getcnnStructAsString(struct)]
+        test_models('cnn_8_8_NOON_32_128', model, desc, train_images, train_labels, test_images, test_labels,
+                    epochs_p=epochs,
+                    batch_size_p=256, save_image=True)
+        del model
+        del desc
+
+    # for i in range(2):
+    #     clear_session()
+    #     struct = generateRandoCNNStruc(use_maxpool=True, use_dropout=False, use_l1l2_conv=True, use_l1l2_output=True,
+    #                                    min_nb_layers=1, max_nb_layers=5, min_filter_size=64, max_filter_size=256)
+    #     model = [create_CNN_model(struct)]
+    #     desc = [getcnnStructAsString(struct)]
+    #     test_models('cnn_1_5_ONOO_64_256', model, desc, train_images, train_labels, test_images, test_labels,
+    #                 epochs_p=epochs,
+    #                 batch_size_p=128, save_image=True)
+    #     del model
+    #     del desc
+    # # #------------------------------------------------------------------------------------------------------------------------------------------------------------#
