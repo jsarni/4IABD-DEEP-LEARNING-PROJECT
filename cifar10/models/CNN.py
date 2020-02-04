@@ -202,7 +202,7 @@ def nb_maxPooling2D_usedmax(filter:int,kernel:int):
     return res
 
 def generateRandoCNNStruc(use_maxpool=True, use_l1l2_conv=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=8,min_filter_size=32,max_filter_size=64):
-    layers_activations = ['softmax', 'relu', 'softplus', 'selu']
+    layers_activations = ['softmax', 'relu','selu']
     output_activations = ['softmax']
     kernel_sizes =randint(2,5)
     #génération des filtres des convolutions:
@@ -231,11 +231,11 @@ def generateRandoCNNStruc(use_maxpool=True, use_l1l2_conv=False, use_l1l2_output
     l1_value = 0.0
     l2_value = 0.0
     if use_l1l2:
-        l1l2_indexes_number = randint(1, nb_layers)
+        l1l2_indexes_number = randint(1, int(nb_layers/2))
         for j in range(l1l2_indexes_number):
             l1l2_indexes.append(randint(1, nb_layers))
-        l1_value = randint(5, 100)/1000
-        l2_value = randint(5, 100) / 1000
+        l1_value = randint(2, 50)/1000
+        l2_value = randint(5, 50) / 1000
 
     maxpool_indexes = []
     if use_maxpool:
