@@ -20,7 +20,7 @@ def create_custom_mlp(mlp_struct: MlpStructurer):
     model = Sequential()
     model.add(Flatten(input_shape=(32, 32, 3)))
     if mlp_struct.use_dropout and 0 in mlp_struct.dropout_indexes:
-        model.add(Dropout(mlp_struct.dropout_value, name="dropout_0"))
+        model.add(Dropout(mlp_struct.dropout_value, name="dropout_input"))
 
     for i in range(len(mlp_struct.layers_size)):
 

@@ -1,0 +1,7 @@
+Best results with Average and not Add
+best results with Softmax and Selu
+Softmax - Add => 0.57
+Softmax - Average => 0.59
+Selu - Add => 0.58
+Selu - Average => 0.59
+ ====> Best Selu

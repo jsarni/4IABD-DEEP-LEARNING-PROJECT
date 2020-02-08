@@ -10,6 +10,7 @@ from cifar10.models.structurer.UNetStructurer import UNetStructurer
 ################################################################## Begining of UNet Part ##########################################################################################
 
 def create_unet(unet_struct: UNetStructurer):
+
     input_tensor = Input((32, 32, 3))
 
     layers_list = []
@@ -32,7 +33,10 @@ def create_unet(unet_struct: UNetStructurer):
 
         layers_list.append(layer)
 
-    layers_list[0] = layers_list[0](input_tensor)
+    if unet_struct.use_dropout and (0 in unet_struct.dropout_indexes):
+        layers_list[0] = layers_list[0](Dropout(unet_struct.dropout_value, name="dropout_input")(input_tensor))
+    else:
+        layers_list[0] = layers_list[0](input_tensor)
 
     if (unet_struct.nb_Conv2D_layers % 2 == 0):
         middle = int(unet_struct.nb_Conv2D_layers / 2)
@@ -91,7 +95,7 @@ def getUNetStructAsString(unet_structurer: UNetStructurer):
                                                                                 unet_structurer.padding)
 
 def generateRandoUNetStruc(use_maxpool=False, use_l1l2_hidden=False, use_l1l2_output=False, use_dropout=False, min_nb_layers=3, max_nb_layers=20):
-    layers_activations = ['softmax', 'relu', 'softplus', 'selu']
+    layers_activations = ['selu']
     output_activations = ['softmax']
     kernel_sizes = [(3, 3)]
     filters = [32]

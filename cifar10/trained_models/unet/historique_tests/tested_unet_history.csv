@@ -16,3 +16,9 @@ nb_couches;filter;kernel;input_shape;activation_couches;activation_output;maxpoo
 9;32;3 3;32;32 32 3;softmax;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;5525695;0.87162;0.5948;20200126
 9;32;3 3;32;32 32 3;softmax;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3482495;0.87388;0.5849;20200126
 11;32;3 3;32;32 32 3;softplus;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;2367066;0.97968;0.515;20200126
+9;32;3 3;32;32 32 3;softmax;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;8474210;0.82866;0.5736;20200127
+9;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3589055;0.94418;0.5925;20200127
+9;32;3 3;32;32 32 3;softmax;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;9058613;0.85294;0.5792;20200127
+11;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3928073;0.95738;0.5968;20200127
+11;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6067132;0.95094;0.5963;20200127
+11;32;3 3;32;32 32 3;softmax;softmax;False;;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;4738072;0.97144;0.5718;20200127

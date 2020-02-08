@@ -12,6 +12,8 @@ class LstmStructurer:
         self.kernel_regularizer = None
         self.recurrent_regularizer = None
         self.output_regularizer = None
+        self.l1_value = 0.0
+        self.l2_value = 0.0
         self.loss = 'sparse_categorical_crossentropy'
         self.optimizer = 'Adam'
         self.metrics = ['sparse_categorical_accuracy']

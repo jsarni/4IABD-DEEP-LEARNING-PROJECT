@@ -1,0 +1,4 @@
+7;64;tanh;sigmoid;softmax;0.0;0.5;NoneType;NoneType;NoneType;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;4732277;0.75014;0.6042;20200204
+7;64;tanh;sigmoid;softmax;0.0;0.5;NoneType;L1L2;NoneType;0.0;0.01;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;3790111;0.73218;0.6018;20200205
+7;64;tanh;sigmoid;softmax;0.0;0.5;NoneType;L1L2;NoneType;0.0;0.005;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;6638637;0.72864;0.591;20200205
+9;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;L1L2;NoneType;0.0;0.01;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;2992010;0.82344;0.6155;20200205

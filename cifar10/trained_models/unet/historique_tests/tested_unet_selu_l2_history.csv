@@ -1,0 +1,22 @@
+nb_couches;filter;kernel;input_shape;activation_couches;activation_output;maxpool;indexes_maxpool;dropout;indexes_dropout;dropout_value;l1l2_couches;l1l2_output;l1_value;l2_value;indexes_l1l2;loss;optimizer;metrics;padding;epochs;model_id;accuracy_train;accuracy_val;dossier
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.001;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;7370110;0.90556;0.5436;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.001;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3175983;0.87782;0.5527;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.001;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;7582707;0.93636;0.5585;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.01;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6678443;0.94014;0.5766;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.01;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;7541851;0.92092;0.556;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.01;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;4422449;0.95198;0.5876;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;True;0.0;0.01;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;9920102;0.95534;0.5763;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;True;0.0;0.01;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;8927483;0.9422;0.5729;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;True;0.0;0.1;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;2681965;0.86624;0.5788;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.1;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;7394589;0.8261;0.5816;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.5;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6722666;0.6906;0.5617;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.5;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;5971779;0.6985;0.5735;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;1;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;4888832;0.61042;0.5501;20200127
+3;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;True;0.0;0.5;1 2 3;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;0833852;0.72004;0.5934;20200127
+7;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.2;1 2 3 4 5 6 7;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;2292716;0.7815;0.542;20200128
+7;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.2;1 2 3 4 5 6 7;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;1689481;0.76472;0.5317;20200128
+7;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.2;1 2 3 4 5 6 7;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;7987980;0.76636;0.542;20200128
+9;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.1;1 2 3 4 5 6 7 8 9;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;0402805;0.8452;0.5688;20200128
+9;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.1;1 2 3 4 5 6 7 8 9;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;5889267;0.83082;0.5529;20200128
+9;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.1;1 2 3 4 5 6 7 8 9;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6571884;0.83692;0.5439;20200128
+9;32;3 3;32;32 32 3;selu;softmax;False;;False;;0.0;True;False;0.0;0.1;1 2 3 4 5 6 7 8 9;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;5167656;0.84338;0.5519;20200128

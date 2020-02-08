@@ -1,0 +1,3 @@
+nb_couches;filter;kernel;input_shape;activation_couches;activation_output;maxpool;indexes_maxpool;dropout;indexes_dropout;dropout_value;l1l2_couches;l1l2_output;l1_value;l2_value;indexes_l1l2;loss;optimizer;metrics;padding;epochs;model_id;accuracy_train;accuracy_val;dossier
+9;32;3 3;32;32 32 3;selu;softmax;False;;True;0;0.2;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;0728929;0.7046;0.4995;20200128
+9;32;3 3;32;32 32 3;selu;softmax;False;;True;1;0.2;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6011128;0.92554;0.5689;20200128

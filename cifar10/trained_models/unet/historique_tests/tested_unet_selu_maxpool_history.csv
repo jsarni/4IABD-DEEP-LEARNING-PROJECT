@@ -1,0 +1,13 @@
+nb_couches;filter;kernel;input_shape;activation_couches;activation_output;maxpool;indexes_maxpool;dropout;indexes_dropout;dropout_value;l1l2_couches;l1l2_output;l1_value;l2_value;indexes_l1l2;loss;optimizer;metrics;padding;epochs;model_id;accuracy_train;accuracy_val;dossier
+3;32;3 3;32;32 32 3;selu;softmax;True;1;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6202514;0.97274;0.5693;20200127
+3;32;3 3;32;32 32 3;selu;softmax;True;1;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3398750;0.78778;0.5297;20200127
+3;32;3 3;32;32 32 3;selu;softmax;True;1;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6540480;0.91888;0.5549;20200127
+5;32;3 3;32;32 32 3;selu;softmax;True;1 2;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;0237673;0.90578;0.588;20200127
+5;32;3 3;32;32 32 3;selu;softmax;True;1 2;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;9243853;0.93848;0.5798;20200127
+5;32;3 3;32;32 32 3;selu;softmax;True;1 2;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;5423648;0.93716;0.5805;20200127
+7;32;3 3;32;32 32 3;selu;softmax;True;1 2 3;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;0832045;0.94658;0.6018;20200202
+7;32;3 3;32;32 32 3;selu;softmax;True;1 2 3;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3750985;0.93796;0.5823;20200202
+7;32;3 3;32;32 32 3;selu;softmax;True;1 2 3;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;6580642;0.92722;0.581;20200202
+9;32;3 3;32;32 32 3;selu;softmax;True;1 2 3 4;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;3695468;0.94236;0.5896;20200202
+9;32;3 3;32;32 32 3;selu;softmax;True;1 2 3 4;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;2628942;0.92278;0.5871;20200202
+9;32;3 3;32;32 32 3;selu;softmax;True;1 2 3 4;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;same;40;9358556;0.9479;0.6027;20200202
