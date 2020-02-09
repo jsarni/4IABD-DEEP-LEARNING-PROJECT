@@ -31,6 +31,7 @@ def test_models(model_type, models, models_descriptions, train_ds, train_labels,
                           epochs=e,
                           batch_size=batch_size_p,
                           callbacks=[tensorboard_callback]
+
                           )
 
             if save_model:

@@ -1,0 +1,10 @@
+Conv2D_nb; Conv2D_size; Conv2D_activation; output_activation; Conv2D_padding; MaxPooling2D_use; MaxPooling2D_values; MaxPooling2D_Position; use_dropout; dropout_indexes; dropout_value; use_l1l2_regularisation_Convolution_layers; use_l1l2_regularisation_output_layer; l1_value; l2_value; regul_kernel_indexes; loss; optimizer; metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;25;2457052;0.71798;0.6913;20200208
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;30;5080360;0.73378;0.6978;20200208
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;35;5649114;0.75964;0.7214;20200208
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;40;8704799;0.76126;0.7241;20200208
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;45;4804701;0.77082;0.7199;20200208
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;True;0;0.43;True;False;0.045;0.099;1 3;sparse_categorical_crossentropy;str;accuracy;50;6204120;0.78506;0.7293;20200208
+5;(64, 5) (64, 5) (32, 5) (128, 5) (128, 5);softmax;softmax;same;True;5;1 5;True;0 2;0.2;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;9339389;0.51846;0.5051;20200126
+5;(64, 5) (64, 5) (128, 5) (64, 5) (32, 5);softplus;softmax;same;True;5;3 5;True;3 5;0.3;True;False;0.05;0.049;1 2 5;sparse_categorical_crossentropy;str;['accuracy'];30;4155926;0.1;0.1;20200126
+5;(32, 3) (32, 3) (32, 3) (32, 3) (32, 3);relu;softmax;same;True;3;3;True;;0.1;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;0186676;0.9098;0.6647;20200127
