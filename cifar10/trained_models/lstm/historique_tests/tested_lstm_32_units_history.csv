@@ -1,3 +1,4 @@
+nb_couches;units;activation_couches;activation_recurrence;activation_output;dropout_value;recurrent_dropout_value;kernel_regulizer;reccurent_regulizer;output_regulizer;l1_value;l2_value;loss;optimizer;metrics;epochs;model_id;accuracy_train;accuracy_val;dossier
 3;32;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;5404520;0.7289;0.5561;20200202
 3;32;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;0384883;0.74528;0.5592;20200202
 3;32;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;0739168;0.72784;0.537;20200202

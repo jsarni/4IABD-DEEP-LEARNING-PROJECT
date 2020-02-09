@@ -1,11 +1,5 @@
-from random import randint, choice
-import pandas as pd
-from math import isnan
-
 from tensorflow.keras.layers import *
 from tensorflow.keras.models import *
-from tensorflow.keras.regularizers import *
-from tensorflow.keras.optimizers import *
 
 from cifar10.models.structurer.LstmStructurer import LstmStructurer
 
@@ -20,8 +14,6 @@ def create_lstm(lstm_struct: LstmStructurer):
     lstm_tensor = input_tensor
     for i in range(lstm_struct.nb_layers - 1):
         lstm_tensor = LSTM(units= lstm_struct.units,
-                           # activation= lstm_struct.activation,
-                           # recurrent_activation=lstm_struct.recurrent_activation,
                            kernel_regularizer=lstm_struct.kernel_regularizer,
                            recurrent_regularizer=lstm_struct.recurrent_regularizer,
                            dropout=lstm_struct.dropout_value,
@@ -30,8 +22,6 @@ def create_lstm(lstm_struct: LstmStructurer):
                            )(lstm_tensor)
 
     lstm_tensor = LSTM(units=lstm_struct.units,
-                       # activation=lstm_struct.activation,
-                       # recurrent_activation=lstm_struct.recurrent_activation,
                        kernel_regularizer=lstm_struct.kernel_regularizer,
                        recurrent_regularizer=lstm_struct.recurrent_regularizer,
                        dropout=lstm_struct.dropout_value,
