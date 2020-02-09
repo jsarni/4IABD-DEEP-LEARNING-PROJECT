@@ -11,7 +11,6 @@ if __name__ == "__main__":
     epochs = [100]
 
     struct = LinearStructurer()
-    #struct.loss ='binary_crossentropy'
     desc = [getLinStructAsString(struct)]
     linear_model = [create_lin_model(struct)]
-    test_models('lin', linear_model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=1024)
+    test_models('lin', linear_model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=1024, save_model=True)

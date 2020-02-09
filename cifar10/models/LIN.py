@@ -21,9 +21,10 @@ def create_lin_model(lin_struct: LinearStructurer):
 
 
 def getLinStructAsString(lin_struct : LinearStructurer):
-    return "{};{};{};{};{};{}".format(lin_struct.nb_hidden_layers,
+    return "{};{};{};{};{};{};{}".format(lin_struct.nb_hidden_layers,
                                                                        " ".join([str(i) for i in
                                                                                  lin_struct.layers_size]),
+                                                                       lin_struct.use_layers_activation,
                                                                        lin_struct.layers_activation,
                                                                        lin_struct.output_activation,
                                                                        lin_struct.loss,

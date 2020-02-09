@@ -4,3 +4,11 @@
 0;;relu;softmax;sparse_categorical_crossentropy;str;1500;6987138;0.20332;0.1867;20200209
 0;;relu;softmax;sparse_categorical_crossentropy;str;100;1213400;0.18956;0.1806;20200209
 0;;relu;softmax;sparse_categorical_crossentropy;str;100;6045391;0.20668;0.2049;20200209
+0;;relu;softmax;sparse_categorical_crossentropy;str;100;9253127;0.31472;0.2955;20200209
+0;;relu;softmax;sparse_categorical_crossentropy;str;100;9422190;0.31446;0.3004;20200209
+0;;relu;softmax;sparse_categorical_crossentropy;str;100;7468530;0.10202;0.1011;20200209
+0;;False;relu;softmax;sparse_categorical_crossentropy;str;100;4132361;0.24694;0.239;20200209
+0;;False;relu;softmax;sparse_categorical_crossentropy;str;100;4270323;0.2849;0.2758;20200209
+0;;False;relu;softmax;sparse_categorical_crossentropy;str;100;5842203;0.22098;0.2119;20200209
+0;;False;relu;softmax;sparse_categorical_crossentropy;str;100;2303053;0.27866;0.271;20200209
+0;;False;relu;softmax;sparse_categorical_crossentropy;str;100;5023822;0.16058;0.157;20200209
