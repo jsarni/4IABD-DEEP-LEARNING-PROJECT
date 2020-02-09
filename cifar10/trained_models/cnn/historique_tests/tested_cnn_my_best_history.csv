@@ -14,3 +14,5 @@
 
 5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;False;0;0;True;False;0.005;0.06;1 3;sparse_categorical_crossentropy;Adam;accuracy;35;4021966;0.81552;0.747;20200209
 5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;False;0;0;True;False;0.005;0.05;1 3;sparse_categorical_crossentropy;Adam;accuracy;35;8774259;0.82086;0.7439;20200209
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;False;0;0;True;False;0.005;0.05;1 3;sparse_categorical_crossentropy;Adam;accuracy;35;5964637;0.81282;0.7503;20200209
+5;(64, 3) (128, 3) (64, 3) (32, 3) (32, 3);selu;softmax;same;True;3;2 4;False;0;0;True;False;0.005;0.05;1 3;sparse_categorical_crossentropy;Adam;accuracy;35;2106078;0.80088;0.743;20200210
