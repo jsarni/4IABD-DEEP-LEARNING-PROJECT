@@ -1,0 +1,10 @@
+nb_hidden_layers;filters;kernel_size;batch_size;input_shape;layers_activation;output_activation;use_skip;nb_skip;use_dropout;dropout_indexes;dropout_value;use_l1l2_regularisation_hidden_layers;use_l1l2_regularisation_output_layer;l1_value;l2_value;regulization_indexes;loss;optimizer;metrics;padding;epochs;model_id;train_accuracy;val_accuracy;dossier
+7;64;3 3;128;32 32 3;selu;softmax;True;2;True;5 4;0.0;True;True;0.023;0.029;2 2 7;categorical_crossentropy;Adam;categorical_accuracy;same;50;1250532;0.78266;0.6965;20200208
+7;32;3 3;128;32 32 3;relu;softmax;True;2;True;5 7;0.024;True;True;0.00025;0.00024;2 4;categorical_crossentropy;Adam;categorical_accuracy;same;50;5097248;0.8224;0.6757;20200209
+7;32;3 3;128;32 32 3;selu;softmax;True;2;True;5 7;0.023;True;True;0.00023;0.0002;2 4;categorical_crossentropy;Adam;categorical_accuracy;same;50;7628417;0.8873200000000001;0.6686;20200209
+8;64;3 3;128;32 32 3;relu;softmax;True;2;True;5 7;0.022;True;True;0.00028;0.0002;2 4;categorical_crossentropy;Adam;categorical_accuracy;same;50;45286;0.8750399999999999;0.6512;20200209
+6;128;3 3;128;32 32 3;relu;softmax;True;2;True;3 4;0.2;True;True;0.0003;0.0002;2;categorical_crossentropy;Adam;categorical_accuracy;same;50;2599981;0.7611399999999999;0.6438;20200203
+6;128;3 3;128;32 32 3;relu;softmax;True;2;True;3 4;0.2;True;True;0.0003;0.0002;2;categorical_crossentropy;Adam;categorical_accuracy;same;50;7171554;0.77956;0.6382;20200203
+6;128;3 3;128;32 32 3;relu;softmax;True;2;True;4;0.2;True;True;0.0002;0.0002;3 6;categorical_crossentropy;Adam;categorical_accuracy;same;50;4893841;0.72964;0.638;20200202
+8;32;3 3;128;32 32 3;relu;softmax;True;2;False;;0.0;True;True;0.006999999999999999;0.035;5;categorical_crossentropy;Adam;categorical_accuracy;same;50;1477028;0.67912;0.6259;20200209
+6;128;3 3;128;32 32 3;relu;softmax;True;2;True;3 4;0.2;True;True;0.0003;0.0002;2;categorical_crossentropy;Adam;categorical_accuracy;same;50;2775255;0.7324;0.6187;20200203
