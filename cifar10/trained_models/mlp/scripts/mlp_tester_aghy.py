@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     (train_data, train_labels), (val_data, val_labels) = cifar10.load_data()
 
-    epochs = [400]
+    epochs = [100]
     # nb_hidden_layers_list = [10]
     # layers_size_list = [[64, 64, 64, 64, 64, 64, 64, 64, 64, 64]]
     # layers_activation_list = ['softplus']
@@ -59,80 +59,80 @@ if __name__ == "__main__":
 
     del model
     del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=128, max_layer_depth=128)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_5_10_128', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
-
-    del model
-    del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=256, max_layer_depth=256)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_5_10_256', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
-
-    del model
-    del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=512, max_layer_depth=512)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_5_10_512', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
-
-    del model
-    del desc
-
-    ########################################################################
-
-    ############################## 20 to 30 layers #########################
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
-                                       same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
-                                       min_layer_depth=64, max_layer_depth=64)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_20_30_64', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
-                    batch_size_p=8192)
-
-    del model
-    del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
-                                       same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
-                                       min_layer_depth=128, max_layer_depth=128)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_20_30_128', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
-                    batch_size_p=8192)
-
-    del model
-    del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
-                                       same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
-                                       min_layer_depth=256, max_layer_depth=256)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_20_30_256', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
-                    batch_size_p=8192)
-    del model
-    del desc
-
-    for i in range(10):
-        struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
-                                       same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
-                                       min_layer_depth=512, max_layer_depth=512)
-        model = [create_custom_mlp(struct)]
-        desc = [getMlpStructAsString(struct)]
-        test_models('mlp_20_30_512', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
-                    batch_size_p=8192)
-    del model
-    del desc
+    #------debut
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=128, max_layer_depth=128)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_5_10_128', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
+    #
+    # del model
+    # del desc
+    #
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=256, max_layer_depth=256)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_5_10_256', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
+    #
+    # del model
+    # del desc
+    #
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False ,same_layers_depth=True, min_nb_layers=5, max_nb_layers=10, min_layer_depth=512, max_layer_depth=512)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_5_10_512', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs, batch_size_p=8192)
+    #
+    # del model
+    # del desc
+    #
+    # ########################################################################
+    #
+    # ############################## 20 to 30 layers #########################
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
+    #                                    same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
+    #                                    min_layer_depth=64, max_layer_depth=64)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_20_30_64', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
+    #                 batch_size_p=8192)
+    #
+    # del model
+    # del desc
+    #
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
+    #                                    same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
+    #                                    min_layer_depth=128, max_layer_depth=128)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_20_30_128', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
+    #                 batch_size_p=8192)
+    #
+    # del model
+    # del desc
+    #
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
+    #                                    same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
+    #                                    min_layer_depth=256, max_layer_depth=256)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_20_30_256', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
+    #                 batch_size_p=8192)
+    # del model
+    # del desc
+    #
+    # for i in range(10):
+    #     struct = generateRandoMlpStruc(use_dropout=False, use_l1l2_hidden=False, use_l1l2_output=False,
+    #                                    same_layers_depth=True, min_nb_layers=20, max_nb_layers=30,
+    #                                    min_layer_depth=512, max_layer_depth=512)
+    #     model = [create_custom_mlp(struct)]
+    #     desc = [getMlpStructAsString(struct)]
+    #     test_models('mlp_20_30_512', model, desc, train_data, train_labels, val_data, val_labels, epochs_p=epochs,
+    #                 batch_size_p=8192)
+    # del model
+    # del desc
     ########################################################################

@@ -9,3 +9,16 @@ nb_couches;profondeurs_couches;activation_couches;activation_output;dropout;nb_d
 10;64 64 64 64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;8962460;0.52134;0.4499;20200122
 6;64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;5411924;0.1;0.1;20200122
 7;64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;7167026;0.1;0.1;20200122
+6;64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;400;7692626;0.1;0.1;20200207
+6;64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;8784584;0.38902;0.3795;20200207
+7;64 64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;3842615;0.40532;0.3937;20200207
+10;64 64 64 64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;0476652;0.44846;0.432;20200207
+9;64 64 64 64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;9234416;0.4462;0.4338;20200207
+5;64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;8690623;0.1;0.1;20200207
+7;64 64 64 64 64 64 64;selu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;5950992;0.39122;0.3883;20200207
+6;64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;1216020;0.35952;0.3552;20200207
+8;64 64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;0465403;0.40296;0.4088;20200207
+6;64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;0994022;0.1;0.1;20200207
+7;64 64 64 64 64 64 64;relu;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;2050515;0.3745;0.3675;20200207
+10;64 64 64 64 64 64 64 64 64 64;softmax;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;1624397;0.1;0.1;20200207
+6;64 64 64 64 64 64;softplus;softmax;False;0;;0.0;False;False;0.0;0.0;0;;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;3492656;0.38794;0.3804;20200207

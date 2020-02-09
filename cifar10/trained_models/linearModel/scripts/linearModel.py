@@ -10,22 +10,22 @@ import numpy as np
 
 
 (train_data, train_labels), (val_data, val_labels) = cifar10.load_data()
+classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 linClassifier = Sequential()
-linClassifier.add(Flatten())
-linClassifier.add(Dense(units = 10, kernel_initializer='uniform', activation='relu', input_dim=10))
+linClassifier.add(Flatten(input_shape=(32, 32, 3)))
+linClassifier.add(Dense(10, activation="softmax"))
+# linClassifier.add(Dense(units = 10, kernel_initializer='uniform', activation='relu', input_dim=10))
 
-print('Training data shape: ', train_data.shape)
-print('Training labels shape: ', train_labels.shape)
-print('Test data shape: ', val_data.shape)
-print('Test labels shape: ', val_labels.shape)
-#print('Features : '),  train_data.
+# print('Training data shape: ', train_data.shape)
+# print('Training labels shape: ', train_labels.shape)
+# print('Test data shape: ', val_data.shape)
+# print('Test labels shape: ', val_labels.shape)
+# print('Features : '),  train_data.
 
 
-classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
 samples_per_class = 7
-
-
 def visualisation(dataset, classes, samples_per_class):
     num_classes = len(classes)
     for y, cls in enumerate(classes):
@@ -44,8 +44,9 @@ visualisation(train_data, classes, samples_per_class)
 
 print("--------------------------it's done--------------------------")
 
+linClassifier.compile(loss='sparse_categorical_crossentropy',
+                  metrics=['sparse_categorical_accuracy'])
 
-
-linClassifier.compile(optimizer='adam', loss='binary_crossentropy', metrics='accuracy')
-linClassifier.fit(train_data, train_labels, batch_size= 100, epochs=10)
-linClassifier.predict(val_data, batch_size=100)
+#linClassifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+linClassifier.fit(train_data, train_labels, batch_size=100, epochs=100)
+#linClassifier.predict(val_data, batch_size=100)
