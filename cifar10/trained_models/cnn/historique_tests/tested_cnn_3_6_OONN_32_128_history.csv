@@ -1,3 +1,0 @@
-3;(32, 2) (64, 2) (128, 2);selu;softmax;same;True;2;3 2 3 3 2;True;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;9819395;0.92936;0.6345;20200126
-5;(64, 5) (64, 5) (32, 5) (128, 5) (128, 5);softmax;softmax;same;True;5;1 5;True;0 2;0.2;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;9339389;0.51846;0.5051;20200126
-3;(64, 4) (128, 4) (128, 4);softplus;softmax;same;True;4;;True;;0.2;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;9045405;0.98006;0.5618;20200126

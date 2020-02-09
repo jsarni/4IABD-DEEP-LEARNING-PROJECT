@@ -1,3 +1,4 @@
+Conv2D_nb; Conv2D_size; Conv2D_activation; output_activation; Conv2D_padding; MaxPooling2D_use; MaxPooling2D_values; MaxPooling2D_Position; use_dropout; dropout_indexes; dropout_value; use_l1l2_regularisation_Convolution_layers; use_l1l2_regularisation_output_layer; l1_value; l2_value; regul_kernel_indexes; loss; optimizer; metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.002;0.035;1 4;sparse_categorical_crossentropy;str;accuracy;20;9053228;0.81374;0.7374;20200131
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.002;0.035;1 4;sparse_categorical_crossentropy;str;accuracy;20;8894696;0.81742;0.738;20200131
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.002;0.035;1 4;sparse_categorical_crossentropy;str;accuracy;25;2130659;0.82652;0.7386;20200131
@@ -50,3 +51,20 @@
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.02;0.075;1 4;sparse_categorical_crossentropy;str;accuracy;35;6975509;0.8537;0.7423;20200204
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.02;0.075;1 4;sparse_categorical_crossentropy;str;accuracy;40;8587834;0.84716;0.7215;20200204
 6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.02;0.075;1 4;sparse_categorical_crossentropy;str;accuracy;45;1979511;0.88064;0.727;20200204
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.025;0.085;1 4;sparse_categorical_crossentropy;str;accuracy;25;1042479;0.81002;0.7308;20200204
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;False;0.025;0.085;1 4;sparse_categorical_crossentropy;str;accuracy;30;2389458;0.80826;0.7119;20200204
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;25;1324046;0.6992;0.6636;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;30;3537393;0.70024;0.6671;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;35;3318884;0.71324;0.6692;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;40;5352396;0.72434;0.6845;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;45;2182160;0.76246;0.6998;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;25;5762867;0.69426;0.6641;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;30;0059813;0.71272;0.6804;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;35;8248521;0.72188;0.6821;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;40;2667699;0.74512;0.6967;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.045;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;45;4972598;0.7629;0.7068;20200205
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.05;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;30;8992104;0.68828;0.658;20200206
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.05;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;35;3387279;0.73824;0.6963;20200206
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.05;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;40;6010925;0.72618;0.684;20200206
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.05;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;45;6632190;0.74598;0.699;20200206
+6;(64, 3) (128, 3) (128, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;True;3;4 5;False;0;0;True;True;0.05;0.095;1 4;sparse_categorical_crossentropy;str;accuracy;50;0637881;0.73246;0.6847;20200206

@@ -184,7 +184,7 @@ def getcnnStructAsString(cnn_structurer):
                                                                     cnn_structurer.l2_value,
                                                                     " ".join([str(i) for i in cnn_structurer.regul_kernel_indexes]),
                                                                     cnn_structurer.loss,
-                                                                    cnn_structurer.optimizer.__class__.__name__,
+                                                                    cnn_structurer.optimizer,
                                                                     " ".join([str(i) for i in cnn_structurer.metrics])
                                                                     )
 

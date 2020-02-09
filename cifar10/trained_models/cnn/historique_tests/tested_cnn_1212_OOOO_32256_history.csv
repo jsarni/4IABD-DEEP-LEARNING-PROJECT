@@ -1,2 +1,0 @@
-12;(64, 2) (64, 2) (128, 2) (128, 2) (226, 2) (226, 2) (64, 2) (64, 2) (32, 2) (32, 2) (32, 2) (32, 2);relu;softmax;same;True;2;1 4 7 11;True;0 5;0.01;True;True;0.001;0.002;3 8;sparse_categorical_crossentropy;str;accuracy;30;7721977;0.91938;0.7029;20200127
-12;(64, 2) (64, 2) (128, 2) (128, 2) (226, 2) (226, 2) (64, 2) (64, 2) (32, 2) (32, 2) (32, 2) (32, 2);relu;softmax;same;True;2;1 4 7 11;True;0 5;0.01;True;True;0.001;0.005;3 8;sparse_categorical_crossentropy;str;accuracy;50;3674271;0.9596;0.6923;20200127

@@ -1,2 +1,18 @@
+Conv2D_nb; Conv2D_size; Conv2D_activation; output_activation; Conv2D_padding; MaxPooling2D_use; MaxPooling2D_values; MaxPooling2D_Position; use_dropout; dropout_indexes; dropout_value; use_l1l2_regularisation_Convolution_layers; use_l1l2_regularisation_output_layer; l1_value; l2_value; regul_kernel_indexes; loss; optimizer; metrics;epochs;model_id;train_accuracy;val_accuracy;dossier
 2;(32, 3) (32, 3);softmax;softmax;same;False;3;;False;;0.0;True;False;0.088;0.019;2;sparse_categorical_crossentropy;str;['accuracy'];30;7108459;0.27946;0.2792;20200126
 3;(32, 4) (32, 4) (64, 4);relu;softmax;same;False;4;;False;;0.0;True;False;0.039;0.064;2 2 2;sparse_categorical_crossentropy;str;['accuracy'];30;0607029;0.67354;0.5542;20200126
+3;(64, 2) (64, 2) (32, 2);softplus;softmax;same;True;2;1 2;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;7884044;0.8124;0.6723;20200126
+2;(64, 5) (64, 5);softmax;softmax;same;True;5;2;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;2029876;0.99586;0.5801;20200126
+2;(32, 2) (32, 2);relu;softmax;same;True;2;2 1;False;;0.0;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;2056139;0.82958;0.5712;20200126
+3;(256, 3) (256, 3) (128, 3);selu;softmax;same;True;3;1;False;;0.0;False;True;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;4086724;0.90286;0.6737;20200126
+3;(64, 2) (128, 2) (256, 2);softplus;softmax;same;True;2;3 1 1;False;;0.0;True;True;0.045;0.09;2 2 2;sparse_categorical_crossentropy;str;['accuracy'];30;7629246;0.1;0.1;20200126
+2;(64, 3) (32, 3);softmax;softmax;same;True;3;2 1;False;;0.0;True;False;0.07;0.019;1 1;sparse_categorical_crossentropy;str;['accuracy'];30;5304755;0.1;0.1;20200126
+3;(32, 4) (32, 4) (64, 4);softplus;softmax;same;True;4;1;False;;0.0;True;False;0.097;0.078;1 2;sparse_categorical_crossentropy;str;['accuracy'];30;8699987;0.43156;0.4293;20200126
+2;(32, 4) (32, 4);selu;softmax;same;True;4;;False;;0.0;True;False;0.01;0.02;1;sparse_categorical_crossentropy;str;['accuracy'];30;5461841;0.85024;0.5425;20200126
+3;(64, 2) (64, 2) (256, 2);softplus;softmax;same;True;2;2 3;False;;0.0;True;False;0.023;0.094;3 1 2;sparse_categorical_crossentropy;str;['accuracy'];30;5161805;0.63336;0.5543;20200126
+2;(64, 5) (64, 5);selu;softmax;same;True;5;1;False;;0.0;True;False;0.037;0.093;2 2;sparse_categorical_crossentropy;str;['accuracy'];30;4602469;0.57868;0.5707;20200126
+3;(64, 2) (256, 2) (64, 2);softplus;softmax;same;True;2;3 2 2 2 1;False;;0.0;True;False;0.006;0.03;3 3;sparse_categorical_crossentropy;str;['accuracy'];30;0228629;0.63564;0.6082;20200126
+3;(32, 3) (64, 3) (64, 3);selu;softmax;same;False;3;;False;;0.0;True;True;0.01;0.093;2 3;sparse_categorical_crossentropy;str;['accuracy'];30;7587256;0.49806;0.4737;20200125
+3;(64, 5) (32, 5) (64, 5);relu;softmax;same;False;5;;False;;0.0;True;True;0.044;0.02;1 2 2;sparse_categorical_crossentropy;str;['accuracy'];30;0719852;0.31776;0.3115;20200125
+3;(32, 2) (128, 2) (64, 2);relu;softmax;same;False;2;;True;3;0.4;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;3520874;0.96266;0.4557;20200125
+3;(32, 2) (32, 2) (64, 2);softmax;softmax;same;False;2;;True;1;0.1;False;False;0.0;0.0;;sparse_categorical_crossentropy;str;['accuracy'];30;8092382;0.68346;0.5746;20200125
