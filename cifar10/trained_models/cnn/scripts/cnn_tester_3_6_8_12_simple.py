@@ -8,7 +8,7 @@ from cifar10.models.ModelTester import test_models
 
 if __name__ == "__main__":
     #déclaration des param:
-    e=[40]
+    e=[35]
     #importation des données:
     (train_images, train_labels), (test_images, test_labels) = tf.keras.datasets.cifar10.load_data()
     #définition des noms des classes:
@@ -27,6 +27,15 @@ if __name__ == "__main__":
     #     clear_session()
     #5;;selu;softmax;same;True;3;2 4;False;0;0;True;False;0.005;0.06;1 3;sparse_categorical_crossentropy;str;accuracy;35
     #à lancer le 9/02 21h
+    for i in (64,128,256):
+        (modelcnn, desccnn) = generateCNNModels([5], [
+        [(64, 3) ,(128, 3) ,(64, 3),(32, 3),(32, 3)]],
+                                            ['selu'], ['softmax'], ['same'], [True], [[2, 4]], [3], [False], [[0]],
+                                            [0], [True], [False], [0.005], [0.06], [[ 1,3]],
+                                            ['sparse_categorical_crossentropy'], ['Adam'], [['accuracy']])
+        test_models('cnn_my_best', modelcnn, desccnn, train_images, train_labels, test_images, test_labels,
+                epochs_p=e, batch_size_p=i, save_image=True,save_model=True)
+        clear_session()
     for i in (128,256,512):
         (modelcnn, desccnn) = generateCNNModels([5], [
         [(64, 3) ,(128, 3) ,(64, 3),(32, 3),(32, 3)]],
