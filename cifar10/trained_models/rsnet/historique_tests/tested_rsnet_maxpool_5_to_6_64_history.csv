@@ -1,0 +1,4 @@
+nb_hidden_layers;filters;kernel_size;batch_size;input_shape;layers_activation;output_activation;use_skip;nb_skip;use_dropout;dropout_indexes;dropout_value;use_l1l2_regularisation_hidden_layers;use_l1l2_regularisation_output_layer;l1_value;l2_value;regulization_indexes;loss;optimizer;metrics;padding;epochs;model_id;train_accuracy;val_accuracy;dossier
+5;64;4 4;128;32 32 3;relu;softmax;True;2;True;2;0.25;True;True;0.01;0.009;1;categorical_crossentropy;Adam;categorical_accuracy;same;50;3034394;0.5342;0.5106;20200208
+5;64;3 3;128;32 32 3;relu;softmax;True;2;True;3;0.3333333333333333;True;True;0.04;0.028;2 1;categorical_crossentropy;Adam;categorical_accuracy;same;50;5014589;0.41648;0.3992;20200209
+6;64;3 3;128;32 32 3;softplus;softmax;True;2;True;3;0.022;True;True;0.00033;0.00022;2 4;categorical_crossentropy;Adam;categorical_accuracy;same;50;1989763;0.86586;0.6229;20200209

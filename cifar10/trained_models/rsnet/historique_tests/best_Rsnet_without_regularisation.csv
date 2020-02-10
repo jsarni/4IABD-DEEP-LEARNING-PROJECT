@@ -1,0 +1,13 @@
+nb_hidden_layers;filters;kernel_size;batch_size;input_shape;layers_activation;output_activation;use_skip;nb_skip;use_dropout;dropout_indexes;dropout_value;use_l1l2_regularisation_hidden_layers;use_l1l2_regularisation_output_layer;l1_value;l2_value;regulization_indexes;loss;optimizer;metrics;padding;epochs;model_id;train_accuracy;val_accuracy;dossier
+6;64;3 3;64;32 32 3;relu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;4288707;0.97262;0.6023;20200128
+8;64;3 3;128;32 32 3;relu;softmax;True;2;True;3;0.21;True;True;0.0002;0.0001;4 6;categorical_crossentropy;Adam;categorical_accuracy;same;50;7460384;0.77644;0.5969;20200205
+8;64;3 3;64;32 32 3;relu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;2747992;0.97862;0.5944;20200127
+8;64;3 3;64;32 32 3;selu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;9276555;0.97346;0.5875;20200127
+6;32;3 3;64;32 32 3;softmax;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;5239202;0.9703799999999999;0.5873;20200128
+8;64;3 3;128;32 32 3;relu;softmax;True;2;True;3;0.21;True;True;0.0002;0.0001;4;categorical_crossentropy;Adam;categorical_accuracy;same;50;1345159;0.7682;0.5828;20200205
+6;32;3 3;64;32 32 3;relu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;5627949;0.9651200000000001;0.5706;20200128
+6;64;3 3;64;32 32 3;softmax;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;360263;0.95868;0.5698;20200128
+6;32;3 3;64;32 32 3;softmax;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;5333719;0.9395;0.5533;20200128
+4;64;3 3;256;32 32 3;relu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;30;9861705;0.8611;0.5403;20200126
+8;32;3 3;64;32 32 3;selu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;5077276;0.9543799999999999;0.5398;20200127
+8;32;3 3;64;32 32 3;relu;softmax;True;2;False;;0.0;False;False;0.0;0.0;;categorical_crossentropy;Adam;categorical_accuracy;same;50;7340360;0.8793;0.5387;20200127

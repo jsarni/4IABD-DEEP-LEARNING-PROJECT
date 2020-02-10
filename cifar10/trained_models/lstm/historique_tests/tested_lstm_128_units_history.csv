@@ -1,0 +1,7 @@
+nb_couches;units;activation_couches;activation_recurrence;activation_output;dropout_value;recurrent_dropout_value;kernel_regulizer;reccurent_regulizer;output_regulizer;l1_value;l2_value;loss;optimizer;metrics;epochs;model_id;accuracy_train;accuracy_val;dossier
+3;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;2791556;0.59014;0.5462;20200203
+3;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;1365519;1.0;0.5396;20200203
+3;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;500;8165893;0.91102;0.5476;20200203
+5;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;1695285;0.97298;0.5719;20200203
+5;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;6858308;0.98742;0.5557;20200203
+7;128;tanh;sigmoid;softmax;0.0;0.0;None;None;None;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;9552585;0.98536;0.5733;20200203

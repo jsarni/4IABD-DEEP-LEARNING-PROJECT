@@ -1,0 +1,4 @@
+3;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;NoneType;NoneType;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;60;3557923;0.7667;0.6232;20200209
+3;128;tanh;sigmoid;softmax;0.0;0.6;NoneType;NoneType;NoneType;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;60;8264849;0.76538;0.6291;20200209
+3;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;NoneType;NoneType;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;60;6239949;0.79222;0.6281;20200209
+3;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;NoneType;NoneType;0.0;0.0;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;60;2693937;0.78;0.6225;20200209

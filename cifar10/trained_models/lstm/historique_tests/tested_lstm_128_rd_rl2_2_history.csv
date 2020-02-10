@@ -1,0 +1,2 @@
+5;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;L1L2;NoneType;0.0;0.0075;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;9536720;0.94014;0.6121;20200205
+5;128;tanh;sigmoid;softmax;0.0;0.5;NoneType;L1L2;NoneType;0.0;0.02;sparse_categorical_crossentropy;Adam;sparse_categorical_accuracy;100;3357646;0.9206;0.6044;20200205

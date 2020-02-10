@@ -1,0 +1,3 @@
+7;(64, 3) (64, 3) (128, 3) (32, 3) (32, 3) (32, 3) (32, 3);relu;softmax;same;False;0;;False;0;0;False;False;0;0;;sparse_categorical_crossentropy;str;accuracy;30;0720202;0.97434;0.5678;20200209
+7;(64, 3) (64, 3) (128, 3) (64, 3) (64, 3) (32, 3) (32, 3);relu;softmax;same;False;0;;False;0;0;False;False;0;0;;sparse_categorical_crossentropy;str;accuracy;30;2629301;0.98602;0.5899;20200209
+7;(64, 3) (64, 3) (128, 3) (128, 3) (128, 3) (32, 3) (32, 3);relu;softmax;same;False;0;;False;0;0;False;False;0;0;;sparse_categorical_crossentropy;str;accuracy;30;8903883;0.98146;0.6115;20200209
